@@ -1,0 +1,49 @@
+---
+import Main from "../../layouts/Main.astro";
+
+const domains = [
+  { name: "Food sovereignty", line: "Domestic production capacity that closes the import dependency." },
+  { name: "Sovereign compute", line: "Distributed, dual-use compute Canada owns and controls." },
+  { name: "Climate tech", line: "Storage, grid, and materials built for a colder, longer horizon." },
+  { name: "Future of work", line: "Hybrid Intelligence practice that keeps skilled work in Canada." },
+  { name: "Education", line: "Research-to-venture pipelines that retain graduates." },
+  { name: "Health and femtech", line: "Care and diagnostics designed around real Canadian need." },
+  { name: "Deep tech and robotics", line: "Manufacturing and automation that rebuild industrial capacity." },
+];
+---
+
+<Main
+  title="Strategic Futures - SyncID Labs"
+  description="The strategic futures we actualize for Canada: food sovereignty, sovereign compute, climate tech, future of work, education, health, and deep tech."
+  lang="en"
+  activePath="/futures"
+>
+  <section class="border-b border-neutral-200">
+    <div class="mx-auto max-w-3xl px-6 py-20">
+      <h1 class="text-4xl font-semibold tracking-tight text-neutral-900">
+        Strategic futures we actualize
+      </h1>
+      <p class="mt-6 text-lg leading-relaxed text-neutral-700">
+        These are the strategic futures we actualize for Canada. Each one names a Canadian
+        challenge and the direction we build toward.
+      </p>
+
+      <div class="mt-12 divide-y divide-neutral-200 border-y border-neutral-200">
+        {
+          domains.map((d) => (
+            <div class="py-6">
+              <h2 class="text-lg font-semibold text-neutral-900">{d.name}</h2>
+              <p class="mt-2 text-neutral-600">{d.line}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <p class="mt-12 text-lg leading-relaxed text-neutral-700">
+        Anchor ventures include DAICompute (sovereign compute), Iterra (food), Arcadia Wellness
+        (health), and Nova Roma with Perceptiosphere (education and research). Each is a buildable
+        future we are working toward, not a forecast.
+      </p>
+    </div>
+  </section>
+</Main>

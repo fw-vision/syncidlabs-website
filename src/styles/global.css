@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+/* Scan the web-kit annotation components so their Tailwind utility classes are generated */
+@source "../../node_modules/@fw-vision/web-kit";
+
+/* SyncID Labs accent: burgundy. Consumed by web-kit components via --wk-accent. */
+:root {
+  --wk-accent: oklch(32.09% 0.131 27.2);
+  --wk-ink: #090707;
+  --wk-graphite: #212529;
+  --wk-hairline: #cccccc;
+  --wk-canvas: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --wk-accent: oklch(66.09% 0.195 37.35);
+  }
+}
+
+/* Editorial discipline: flat, squared, hairline. */
+a {
+  text-underline-offset: 2px;
+}

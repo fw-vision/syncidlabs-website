@@ -1,0 +1,75 @@
+---
+import Main from "../../layouts/Main.astro";
+
+const stats = [
+  {
+    value: "71%",
+    claim: "Canadian productivity has fallen to 71% of the US level.",
+    source: "Bank of Canada, 2024",
+  },
+  {
+    value: "1.81% vs 2.73%",
+    claim: "R&D intensity is 1.81% of GDP, against an OECD average of 2.73%.",
+    source: "Statistics Canada, 2024",
+  },
+  {
+    value: "1.2M+",
+    claim:
+      "Canadians made more than 1.2 million TN professional-work entries into the United States in fiscal 2023.",
+    source: "US Department of Homeland Security",
+    caveat:
+      "These are admissions, not distinct individuals; one person may enter multiple times.",
+  },
+  {
+    value: "44.3%",
+    claim: "Foreign firms control 44.3% of Canadian manufacturing assets.",
+    source: "Statistics Canada, 2023",
+  },
+];
+---
+
+<Main
+  title="The Evidence - SyncID Labs"
+  description="The verified problem statement behind SyncID Labs: productivity, R&D intensity, skilled emigration, and foreign control. Every figure sourced."
+  lang="en"
+  activePath="/research"
+>
+  <section class="border-b border-neutral-200">
+    <div class="mx-auto max-w-3xl px-6 py-20">
+      <h1 class="text-4xl font-semibold tracking-tight text-neutral-900">The evidence</h1>
+      <p class="mt-6 text-lg leading-relaxed text-neutral-700">
+        Canada generates world-class research and talent, then loses the value of both. The problem
+        statement below is verified. Every figure is sourced.
+      </p>
+
+      <div class="mt-12 space-y-10">
+        {
+          stats.map((s) => (
+            <div class="border-l-2 pl-6" style="border-color: var(--wk-accent);">
+              <p class="text-3xl font-semibold text-neutral-900">{s.value}</p>
+              <p class="mt-2 text-lg text-neutral-800">{s.claim}</p>
+              <p class="mt-2 text-sm text-neutral-500">{s.source}</p>
+              {s.caveat && <p class="mt-1 text-sm italic text-neutral-500">{s.caveat}</p>}
+            </div>
+          ))
+        }
+      </div>
+
+      <p class="mt-10 text-base leading-relaxed text-neutral-600">
+        The Council of Canadian Academies (2025) reports the same pattern at a systemic level:
+        strong inputs, weak outcomes.
+      </p>
+
+      <h2 class="mt-16 text-2xl font-semibold text-neutral-900">The opportunity</h2>
+      <p class="mt-6 text-lg leading-relaxed text-neutral-700">
+        Canada's long-horizon potential is measured in the multiple trillions of dollars. We treat
+        this as a scenario range, not a forecast.
+      </p>
+      <p class="mt-4 text-lg leading-relaxed text-neutral-700">
+        The precedent is close to home. The Waterloo region generated tens of billions in value
+        between 2013 and 2023. A district that keeps talent, IP, and ventures at home can do the
+        same, deliberately.
+      </p>
+    </div>
+  </section>
+</Main>

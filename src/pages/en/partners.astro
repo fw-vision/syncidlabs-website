@@ -1,0 +1,52 @@
+---
+import Main from "../../layouts/Main.astro";
+
+const sections = [
+  {
+    audience: "Capital",
+    body: "A de-risked, methodology-backed coalition play toward defined Canadian futures. Returns without venture-studio dilution or origination risk, in the durable market of crossing firms back over the chasm.",
+  },
+  {
+    audience: "Institutions",
+    body: "Bring your research and your alumni to a district built for actualizing Canada's futures. We offer space, access, and mission alignment.",
+  },
+  {
+    audience: "Founders",
+    body: "Place, peers, mission, and mentorship. A prime Markham location alongside top researchers, in a coalition building a sovereign Canada. The alternative to the accelerator model.",
+  },
+];
+---
+
+<Main
+  title="Partners - SyncID Labs"
+  description="For capital, institutions, and founders. Join the district that actualizes Canada's strategic futures."
+  lang="en"
+  activePath="/partners"
+>
+  <section class="border-b border-neutral-200">
+    <div class="mx-auto max-w-3xl px-6 py-20">
+      <h1 class="text-4xl font-semibold tracking-tight text-neutral-900">Partners</h1>
+
+      <div class="mt-12 space-y-12">
+        {
+          sections.map((s) => (
+            <div>
+              <h2 class="text-2xl font-semibold text-neutral-900">{s.audience}</h2>
+              <p class="mt-4 text-lg leading-relaxed text-neutral-700">{s.body}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div class="mt-16">
+        <a
+          href="/en/contact"
+          class="inline-flex items-center px-6 py-3 text-sm font-medium text-white"
+          style="background-color: var(--wk-accent);"
+        >
+          Start a conversation
+        </a>
+      </div>
+    </div>
+  </section>
+</Main>

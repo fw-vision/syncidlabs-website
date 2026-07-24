@@ -1,0 +1,108 @@
+---
+import "../styles/global.css";
+import "@fw-vision/web-kit/styles/tokens.css";
+import "@fw-vision/web-kit/styles/annotation-tokens.css";
+
+export interface Props {
+  title: string;
+  description?: string;
+  lang?: string;
+  activePath?: string;
+}
+
+const { title, description, lang = "en", activePath = "" } = Astro.props;
+
+const navLinks = [
+  { label: "About", href: `/${lang}/about` },
+  { label: "District", href: `/${lang}/district` },
+  { label: "Futures", href: `/${lang}/futures` },
+  { label: "Approach", href: `/${lang}/approach` },
+  { label: "Research", href: `/${lang}/research` },
+  { label: "Partners", href: `/${lang}/partners` },
+  { label: "Insights", href: `/${lang}/insights` },
+  { label: "Contact", href: `/${lang}/contact` },
+];
+
+const locales = [
+  { code: "en", href: activePath ? `/en${activePath}` : "/en/" },
+  { code: "fr", href: activePath ? `/fr${activePath}` : "/fr/" },
+  { code: "zh", href: activePath ? `/zh${activePath}` : "/zh/" },
+];
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+  </head>
+  <body class="bg-white text-neutral-900 antialiased">
+    <header class="border-b border-neutral-200">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+        <a href={`/${lang}/`} class="text-sm font-semibold tracking-tight text-neutral-900">
+          SyncID Labs
+        </a>
+        <nav class="hidden items-center gap-6 md:flex">
+          {
+            navLinks.map((link) => (
+              <a
+                href={link.href}
+                class="text-sm text-neutral-600 transition-colors hover:text-neutral-900"
+                aria-current={activePath === link.href.replace(`/${lang}`, "") ? "page" : undefined}
+              >
+                {link.label}
+              </a>
+            ))
+          }
+        </nav>
+        <div class="flex items-center gap-2">
+          {
+            locales.map((loc) => (
+              <a
+                href={loc.href}
+                class:list={[
+                  "px-2 py-1 text-xs uppercase tracking-wide transition-colors",
+                  loc.code === lang ? "font-semibold text-neutral-900" : "text-neutral-400 hover:text-neutral-700",
+                ]}
+              >
+                {loc.code}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="mt-24 border-t border-neutral-200">
+      <div class="mx-auto max-w-6xl px-6 py-12">
+        <div class="flex flex-col justify-between gap-8 md:flex-row">
+          <div>
+            <p class="text-sm font-semibold text-neutral-900">SyncID Labs</p>
+            <p class="mt-2 max-w-sm text-sm text-neutral-500">
+              Actualizing Canada's strategic futures. An innovation district, real pipelines,
+              and coalitions of ventures, built on 89 acres in Markham.
+            </p>
+          </div>
+          <nav class="flex flex-col gap-2 text-sm text-neutral-500">
+            <a href={`/${lang}/about`} class="hover:text-neutral-900">About</a>
+            <a href={`/${lang}/research`} class="hover:text-neutral-900">Research</a>
+            <a href={`/${lang}/partners`} class="hover:text-neutral-900">Partners</a>
+            <a href={`/${lang}/contact`} class="hover:text-neutral-900">Contact</a>
+            <a href={`/${lang}/legal/privacy`} class="hover:text-neutral-900">Privacy</a>
+            <a href={`/${lang}/legal/terms`} class="hover:text-neutral-900">Terms</a>
+          </nav>
+        </div>
+        <p class="mt-10 text-xs text-neutral-400">
+          &copy; {new Date().getFullYear()} SyncID Labs. Synchronous Incubation and Development Labs.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
