@@ -25,3 +25,16 @@ export const IMG_COMPUTE =
 
 export const IMG_RESEARCH =
   "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2400&q=70"; // data / network / earth-at-night
+
+export const IMG_CTA =
+  "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=2400&q=70"; // collaboration / workspace
+
+/** Insights / featured-article card placeholders. */
+export const ARTICLE_IMAGES = [
+  "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=70", // meeting / build
+  "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=70", // office / workspace
+  "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=70", // interior / district
+  "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=1200&q=70", // lab / greenhouse
+  "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=70", // compute / circuit
+  "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=70", // energy / infrastructure
+];

@@ -1,21 +1,126 @@
 ---
 import Main from "../../layouts/Main.astro";
 import PageHeader from "../../components/PageHeader.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import Ticker from "../../components/Ticker.astro";
+import { ARTICLE_IMAGES } from "../../data/media";
+
+// Placeholder editorial content. TODO: replace with real posts / content collection.
+const featured = {
+  image: ARTICLE_IMAGES[0],
+  title: "Why Canada builds highways and forgets the on-ramps",
+  date: "Coming soon",
+  categories: ["Perspective"],
+  excerpt:
+    "The innovation paradox in one sentence: strong inputs, weak outcomes. A look at the five gaps and what actualizing them looks like on the ground.",
+};
+
+const articles = [
+  {
+    image: ARTICLE_IMAGES[1],
+    title: "The five-year proof: what 89 acres in Markham will hold",
+    date: "Coming soon",
+    categories: ["District"],
+  },
+  {
+    image: ARTICLE_IMAGES[2],
+    title: "Actualizers, not onlookers: the method behind the district",
+    date: "Coming soon",
+    categories: ["Approach"],
+  },
+  {
+    image: ARTICLE_IMAGES[3],
+    title: "Food sovereignty as a buildable Canadian future",
+    date: "Coming soon",
+    categories: ["Futures"],
+  },
+  {
+    image: ARTICLE_IMAGES[4],
+    title: "Sovereign compute: distributed, dual-use, and Canadian-owned",
+    date: "Coming soon",
+    categories: ["Futures"],
+  },
+  {
+    image: ARTICLE_IMAGES[5],
+    title: "The Constellation play: crossing firms back over the chasm",
+    date: "Coming soon",
+    categories: ["Capital"],
+  },
+];
+
+const tickerItems = [
+  "Food sovereignty",
+  "Sovereign compute",
+  "Climate tech",
+  "Future of work",
+  "Education",
+  "Health and femtech",
+  "Deep tech and robotics",
+];
 ---
 
 <Main
   title="Insights - SyncID Labs"
-  description="News, releases, and articles from SyncID Labs."
+  description="News, releases, and perspectives from SyncID Labs on actualizing Canada's strategic futures."
   lang="en"
   activePath="/insights"
 >
-  <PageHeader eyebrow="Insights" title="News and releases." />
+  <PageHeader
+    eyebrow="Insights"
+    title="News, releases, and perspectives."
+    lead="How we are actualizing Canada's strategic futures, in the open."
+  />
 
+  <Ticker items={tickerItems} />
+
+  <!-- Featured article -->
+  <section class="border-b border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+      <p class="eyebrow text-graphite/60">Featured</p>
+      <a href="/en/research" class="group mt-8 grid gap-8 lg:grid-cols-2 lg:gap-12">
+        <div class="aspect-[16/10] overflow-hidden border border-hairline bg-neutral-100">
+          <img
+            src={featured.image}
+            alt=""
+            loading="lazy"
+            class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+          />
+        </div>
+        <div class="flex flex-col justify-center">
+          <div class="flex flex-wrap gap-2">
+            {featured.categories.map((c) => <span class="eyebrow text-graphite/60">{c}</span>)}
+          </div>
+          <h2
+            class="font-display mt-4 text-3xl font-medium leading-tight tracking-tight text-ink sm:text-4xl"
+          >
+            {featured.title}
+          </h2>
+          <p class="mt-5 text-lg leading-relaxed text-graphite">{featured.excerpt}</p>
+          <span class="accent-link mt-6 inline-block text-sm font-medium">Read more &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Article grid -->
   <section>
-    <div class="mx-auto max-w-3xl px-6 py-20 lg:px-10">
-      <p class="text-lg leading-relaxed text-graphite/70">
-        News and releases will appear here.
-      </p>
+    <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+      <div class="flex items-baseline justify-between">
+        <p class="eyebrow text-graphite/60">Latest</p>
+      </div>
+      <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {
+          articles.map((a) => (
+            <ArticleCard
+              image={a.image}
+              title={a.title}
+              date={a.date}
+              categories={a.categories}
+              href="/en/research"
+            />
+          ))
+        }
+      </div>
     </div>
   </section>
 </Main>

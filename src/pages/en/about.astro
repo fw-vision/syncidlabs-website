@@ -1,6 +1,7 @@
 ---
 import Main from "../../layouts/Main.astro";
 import PageHeader from "../../components/PageHeader.astro";
+import StatCounter from "../../components/StatCounter.astro";
 ---
 
 <Main
@@ -36,6 +37,19 @@ import PageHeader from "../../components/PageHeader.astro";
           FW.VISION provides the governance and futures research. SyncID actualizes.
         </p>
       </div>
+    </div>
+  </section>
+
+  <section class="border-t border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <StatCounter
+        stats={[
+          { value: "2013", label: "Venture-studio pioneer" },
+          { value: "$70M", label: "Venture exit" },
+          { value: "$650M", label: "Venture exit" },
+          { value: "2", label: "Doctoral programs" },
+        ]}
+      />
     </div>
   </section>
 </Main>

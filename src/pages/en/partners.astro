@@ -1,6 +1,8 @@
 ---
 import Main from "../../layouts/Main.astro";
 import PageHeader from "../../components/PageHeader.astro";
+import MediaCTA from "../../components/MediaCTA.astro";
+import { IMG_CTA } from "../../data/media";
 
 const sections = [
   {
@@ -56,4 +58,12 @@ const sections = [
       </a>
     </div>
   </section>
+
+  <MediaCTA
+    image={IMG_CTA}
+    eyebrow="Build with us"
+    headline="A district that keeps Canadian talent, IP, and value at home."
+    ctaLabel="Start a conversation"
+    ctaHref="/en/contact"
+  />
 </Main>

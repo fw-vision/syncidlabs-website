@@ -1,0 +1,33 @@
+---
+/**
+ * Stat counter row, Tech Barcelona-style. Large accent figure + label.
+ */
+export interface Props {
+  stats: Array<{ value: string; label: string }>;
+  dark?: boolean;
+}
+const { stats, dark = false } = Astro.props;
+---
+
+<div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+  {
+    stats.map((s) => (
+      <div>
+        <div
+          class="font-display text-4xl font-semibold tracking-tight sm:text-5xl"
+          style={dark ? "color: #fff;" : "color: var(--wk-accent);"}
+        >
+          {s.value}
+        </div>
+        <div
+          class:list={[
+            "mt-2 text-sm font-medium",
+            dark ? "text-white/60" : "text-graphite",
+          ]}
+        >
+          {s.label}
+        </div>
+      </div>
+    ))
+  }
+</div>

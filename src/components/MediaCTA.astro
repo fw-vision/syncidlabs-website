@@ -1,0 +1,35 @@
+---
+/**
+ * Full-bleed media banner CTA. Image + scrim + eyebrow + headline + button.
+ */
+export interface Props {
+  image: string;
+  eyebrow?: string;
+  headline: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+const { image, eyebrow, headline, ctaLabel, ctaHref } = Astro.props;
+---
+
+<section class="media-band bg-ink text-white">
+  <img class="media-band__media" src={image} alt="" loading="lazy" />
+  <div class="media-band__scrim"></div>
+  <div class="media-band__content mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
+    {eyebrow && <p class="eyebrow text-white/50">{eyebrow}</p>}
+    <h2 class="font-display mt-5 max-w-3xl text-3xl font-medium leading-tight sm:text-4xl">
+      {headline}
+    </h2>
+    {
+      ctaLabel && ctaHref && (
+        <a
+          href={ctaHref}
+          class="mt-8 inline-flex items-center px-7 py-3.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
+          style="background-color: var(--wk-accent);"
+        >
+          {ctaLabel}
+        </a>
+      )
+    }
+  </div>
+</section>

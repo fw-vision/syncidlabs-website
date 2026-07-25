@@ -1,6 +1,8 @@
 ---
 import Main from "../../layouts/Main.astro";
 import PageHeader from "../../components/PageHeader.astro";
+import MediaCTA from "../../components/MediaCTA.astro";
+import { IMG_LAND } from "../../data/media";
 
 const domains = [
   { name: "Food sovereignty", line: "Domestic production capacity that closes the import dependency." },
@@ -49,4 +51,12 @@ const domains = [
       </p>
     </div>
   </section>
+
+  <MediaCTA
+    image={IMG_LAND}
+    eyebrow="Buildable, not speculative"
+    headline="Foresight scenarios we actively work toward, on real land."
+    ctaLabel="See the district"
+    ctaHref="/en/district"
+  />
 </Main>

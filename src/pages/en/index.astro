@@ -1,6 +1,8 @@
 ---
 import Main from "../../layouts/Main.astro";
 import Wordmark from "../../components/Wordmark.astro";
+import Ticker from "../../components/Ticker.astro";
+import StatCounter from "../../components/StatCounter.astro";
 import { HERO_VIDEO, HERO_POSTER, IMG_DISTRICT, IMG_LAND } from "../../data/media";
 ---
 
@@ -52,6 +54,20 @@ import { HERO_VIDEO, HERO_POSTER, IMG_DISTRICT, IMG_LAND } from "../../data/medi
     </div>
   </section>
 
+  <!-- Ticker: the futures we actualize -->
+  <Ticker
+    items={[
+      "Food sovereignty",
+      "Sovereign compute",
+      "Climate tech",
+      "Future of work",
+      "Education",
+      "Health and femtech",
+      "Deep tech and robotics",
+    ]}
+    dark={false}
+  />
+
   <!-- The stakes -->
   <section class="border-b border-hairline">
     <div class="mx-auto max-w-7xl px-6 py-24 lg:px-10">
@@ -62,6 +78,20 @@ import { HERO_VIDEO, HERO_POSTER, IMG_DISTRICT, IMG_LAND } from "../../data/medi
         Canadian productivity has fallen to 71% of the US level.
       </p>
       <p class="mt-5 text-sm text-graphite">Bank of Canada, 2024</p>
+    </div>
+  </section>
+
+  <!-- Stat counters -->
+  <section class="border-b border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <StatCounter
+        stats={[
+          { value: "89", label: "Acres in Markham" },
+          { value: "2013", label: "Building since" },
+          { value: "7", label: "Strategic futures" },
+          { value: "50yr", label: "Phased horizon" },
+        ]}
+      />
     </div>
   </section>
 
