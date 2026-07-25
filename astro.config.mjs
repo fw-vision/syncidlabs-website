@@ -1,7 +1,6 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from "@astrojs/sitemap";
-import react from "@astrojs/react";
 import { fileURLToPath } from 'url';
 import { resolve } from 'path';
 
@@ -30,7 +29,7 @@ export default defineConfig({
   },
   site: 'https://syncidlabs.com',
   base: '/',
-  integrations: [sitemap(), react()],
+  integrations: [sitemap()],
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'fr', 'zh'],
