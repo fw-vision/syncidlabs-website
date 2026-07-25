@@ -1,12 +1,13 @@
 ---
 import Main from "../../layouts/Main.astro";
+import PageHeader from "../../components/PageHeader.astro";
 ---
 
 <Main title="SyncID Labs" lang="zh" activePath="/futures">
-  <section class="border-b border-neutral-200">
-    <div class="mx-auto max-w-3xl px-6 py-20">
-      <h1 class="text-3xl font-semibold tracking-tight text-neutral-900">内容准备中。</h1>
-      <p class="mt-6 text-lg leading-relaxed text-neutral-500">此页面的中文版本即将推出。</p>
+  <PageHeader eyebrow="准备中" title="内容准备中。" />
+  <section>
+    <div class="mx-auto max-w-3xl px-6 py-20 lg:px-10">
+      <p class="text-lg leading-relaxed text-graphite/70">此页面的中文版本即将推出。</p>
     </div>
   </section>
 </Main>

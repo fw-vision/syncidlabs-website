@@ -1,5 +1,6 @@
 ---
 import Main from "../../layouts/Main.astro";
+import PageHeader from "../../components/PageHeader.astro";
 ---
 
 <Main
@@ -8,18 +9,20 @@ import Main from "../../layouts/Main.astro";
   lang="en"
   activePath="/contact"
 >
-  <section class="border-b border-neutral-200">
-    <div class="mx-auto max-w-3xl px-6 py-20">
-      <h1 class="text-4xl font-semibold tracking-tight text-neutral-900">Start a conversation</h1>
-      <p class="mt-6 text-lg leading-relaxed text-neutral-700">
-        We welcome civic, institutional, capital, and founder enquiries. The clearest first step is
-        a direct conversation.
-      </p>
-      <p class="mt-8 text-lg text-neutral-800">
-        <a href="mailto:hello@syncidlabs.com" class="font-medium" style="color: var(--wk-accent);"
-          >hello@syncidlabs.com</a
-        >
-      </p>
+  <PageHeader
+    eyebrow="Contact"
+    title="Start a conversation."
+    lead="We welcome civic, institutional, capital, and founder enquiries. The clearest first step is a direct conversation."
+  />
+
+  <section>
+    <div class="mx-auto max-w-3xl px-6 py-20 lg:px-10">
+      <a
+        href="mailto:hello@syncidlabs.com"
+        class="accent-link font-display text-2xl font-medium sm:text-3xl"
+      >
+        hello@syncidlabs.com
+      </a>
     </div>
   </section>
 </Main>

@@ -1,5 +1,6 @@
 ---
 import Main from "../../layouts/Main.astro";
+import PageHeader from "../../components/PageHeader.astro";
 
 const stats = [
   {
@@ -34,41 +35,43 @@ const stats = [
   lang="en"
   activePath="/research"
 >
-  <section class="border-b border-neutral-200">
-    <div class="mx-auto max-w-3xl px-6 py-20">
-      <h1 class="text-4xl font-semibold tracking-tight text-neutral-900">The evidence</h1>
-      <p class="mt-6 text-lg leading-relaxed text-neutral-700">
-        Canada generates world-class research and talent, then loses the value of both. The problem
-        statement below is verified. Every figure is sourced.
-      </p>
+  <PageHeader
+    eyebrow="The evidence"
+    title="Canada generates world-class research and talent, then loses the value of both."
+    lead="The problem statement below is verified. Every figure is sourced."
+  />
 
-      <div class="mt-12 space-y-10">
+  <section class="border-b border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+      <div class="grid grid-cols-1 gap-px bg-hairline md:grid-cols-2">
         {
           stats.map((s) => (
-            <div class="border-l-2 pl-6" style="border-color: var(--wk-accent);">
-              <p class="text-3xl font-semibold text-neutral-900">{s.value}</p>
-              <p class="mt-2 text-lg text-neutral-800">{s.claim}</p>
-              <p class="mt-2 text-sm text-neutral-500">{s.source}</p>
-              {s.caveat && <p class="mt-1 text-sm italic text-neutral-500">{s.caveat}</p>}
+            <div class="bg-canvas p-9">
+              <p class="font-display text-4xl font-medium text-ink lg:text-5xl">{s.value}</p>
+              <p class="mt-4 text-lg leading-relaxed text-ink">{s.claim}</p>
+              <p class="mt-4 text-sm font-medium text-graphite">{s.source}</p>
+              {s.caveat && <p class="mt-1 text-sm italic text-graphite/70">{s.caveat}</p>}
             </div>
           ))
         }
       </div>
-
-      <p class="mt-10 text-base leading-relaxed text-neutral-600">
+      <p class="mt-10 max-w-3xl text-base leading-relaxed text-graphite">
         The Council of Canadian Academies (2025) reports the same pattern at a systemic level:
         strong inputs, weak outcomes.
       </p>
+    </div>
+  </section>
 
-      <h2 class="mt-16 text-2xl font-semibold text-neutral-900">The opportunity</h2>
-      <p class="mt-6 text-lg leading-relaxed text-neutral-700">
-        Canada's long-horizon potential is measured in the multiple trillions of dollars. We treat
-        this as a scenario range, not a forecast.
+  <section>
+    <div class="mx-auto max-w-3xl px-6 py-20 lg:px-10">
+      <p class="eyebrow text-graphite/60">The opportunity</p>
+      <p class="mt-6 text-2xl leading-snug text-ink">
+        Canada's long-horizon potential is measured in the multiple trillions of dollars.
       </p>
-      <p class="mt-4 text-lg leading-relaxed text-neutral-700">
-        The precedent is close to home. The Waterloo region generated tens of billions in value
-        between 2013 and 2023. A district that keeps talent, IP, and ventures at home can do the
-        same, deliberately.
+      <p class="mt-5 text-lg leading-relaxed text-graphite">
+        We treat this as a scenario range, not a forecast. The precedent is close to home: the
+        Waterloo region generated tens of billions in value between 2013 and 2023. A district that
+        keeps talent, IP, and ventures at home can do the same, deliberately.
       </p>
     </div>
   </section>

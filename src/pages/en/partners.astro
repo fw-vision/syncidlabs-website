@@ -1,5 +1,6 @@
 ---
 import Main from "../../layouts/Main.astro";
+import PageHeader from "../../components/PageHeader.astro";
 
 const sections = [
   {
@@ -23,30 +24,36 @@ const sections = [
   lang="en"
   activePath="/partners"
 >
-  <section class="border-b border-neutral-200">
-    <div class="mx-auto max-w-3xl px-6 py-20">
-      <h1 class="text-4xl font-semibold tracking-tight text-neutral-900">Partners</h1>
+  <PageHeader eyebrow="Partners" title="Endorse it, invest in it, or join it." />
 
-      <div class="mt-12 space-y-12">
+  <section class="border-b border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+      <div class="divide-y divide-hairline border-y border-hairline">
         {
           sections.map((s) => (
-            <div>
-              <h2 class="text-2xl font-semibold text-neutral-900">{s.audience}</h2>
-              <p class="mt-4 text-lg leading-relaxed text-neutral-700">{s.body}</p>
+            <div class="grid gap-6 py-12 lg:grid-cols-12">
+              <div class="lg:col-span-3">
+                <h2 class="font-display text-2xl font-medium text-ink">{s.audience}</h2>
+              </div>
+              <div class="lg:col-span-9">
+                <p class="max-w-2xl text-lg leading-relaxed text-graphite">{s.body}</p>
+              </div>
             </div>
           ))
         }
       </div>
+    </div>
+  </section>
 
-      <div class="mt-16">
-        <a
-          href="/en/contact"
-          class="inline-flex items-center px-6 py-3 text-sm font-medium text-white"
-          style="background-color: var(--wk-accent);"
-        >
-          Start a conversation
-        </a>
-      </div>
+  <section>
+    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <a
+        href="/en/contact"
+        class="inline-flex items-center px-7 py-3.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
+        style="background-color: var(--wk-accent);"
+      >
+        Start a conversation
+      </a>
     </div>
   </section>
 </Main>

@@ -9,74 +9,89 @@ import Main from "../../layouts/Main.astro";
   activePath="/"
 >
   <!-- Hero (dark band) -->
-  <section class="bg-neutral-950 text-white">
-    <div class="mx-auto max-w-6xl px-6 py-24 sm:py-32">
-      <p class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-400">SyncID Labs</p>
-      <h1 class="mt-6 max-w-4xl text-4xl font-semibold leading-tight tracking-tight sm:text-6xl">
+  <section class="bg-ink text-white">
+    <div class="mx-auto max-w-7xl px-6 py-28 sm:py-36 lg:px-10">
+      <p class="eyebrow text-white/50">Synchronous Incubation and Development Labs</p>
+      <h1
+        class="font-display mt-8 max-w-5xl text-5xl font-medium leading-[1.03] tracking-[-0.03em] sm:text-6xl lg:text-[5.25rem]"
+      >
         SyncID Labs actualizes Canada's strategic futures.
       </h1>
-      <p class="mt-6 max-w-2xl text-lg text-neutral-300">
+      <p class="mt-8 max-w-2xl text-lg leading-relaxed text-white/70 sm:text-xl">
         We build the innovation district, the founder and research pipelines, and the coalitions
         of ventures that turn foresight into a sovereign, economically powerful Canada.
       </p>
-      <div class="mt-10">
+      <div class="mt-12 flex flex-wrap items-center gap-6">
         <a
           href="/en/contact"
-          class="inline-flex items-center px-6 py-3 text-sm font-medium text-white"
+          class="inline-flex items-center px-7 py-3.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
           style="background-color: var(--wk-accent);"
         >
           Start a conversation
+        </a>
+        <a href="/en/district" class="text-sm font-medium text-white/80 hover:text-white">
+          See the district &rarr;
         </a>
       </div>
     </div>
   </section>
 
-  <!-- The stakes -->
-  <section class="border-b border-neutral-200">
-    <div class="mx-auto max-w-6xl px-6 py-16">
-      <p class="max-w-3xl text-2xl font-medium leading-snug text-neutral-900">
+  <!-- The stakes (oversized editorial statement) -->
+  <section class="border-b border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-10">
+      <p class="eyebrow text-graphite/60">The stakes</p>
+      <p
+        class="font-display mt-6 max-w-4xl text-3xl font-normal leading-tight tracking-tight text-ink sm:text-4xl lg:text-5xl"
+      >
         Canadian productivity has fallen to 71% of the US level.
       </p>
-      <p class="mt-3 text-sm text-neutral-500">Bank of Canada, 2024</p>
+      <p class="mt-5 text-sm text-graphite">Bank of Canada, 2024</p>
     </div>
   </section>
 
   <!-- The district -->
-  <section class="border-b border-neutral-200">
-    <div class="mx-auto max-w-6xl px-6 py-16">
-      <p class="max-w-3xl text-lg text-neutral-700">
-        A dense, mixed-use innovation district on 89 acres in Markham, built to keep Canadian
-        talent, IP, and value at home.
-      </p>
-      <a
-        href="/en/district"
-        class="mt-4 inline-block text-sm font-medium"
-        style="color: var(--wk-accent);">See the district</a
-      >
+  <section class="border-b border-hairline">
+    <div class="mx-auto grid max-w-7xl gap-10 px-6 py-24 lg:grid-cols-12 lg:px-10">
+      <div class="lg:col-span-3">
+        <p class="eyebrow text-graphite/60">The district</p>
+      </div>
+      <div class="lg:col-span-9">
+        <p class="max-w-3xl text-2xl leading-snug text-ink">
+          A dense, mixed-use innovation district on 89 acres in Markham, built to keep Canadian
+          talent, IP, and value at home.
+        </p>
+        <a href="/en/district" class="accent-link mt-6 inline-block text-sm font-medium">
+          Explore the district
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- Three doors -->
-  <section class="border-b border-neutral-200">
-    <div class="mx-auto max-w-6xl px-6 py-16">
-      <div class="grid grid-cols-1 gap-px bg-neutral-200 md:grid-cols-3">
-        <a href="/en/partners" class="group bg-white p-8 transition-colors hover:bg-neutral-50">
-          <h2 class="text-lg font-semibold text-neutral-900">Capital</h2>
-          <p class="mt-3 text-sm text-neutral-600">
+  <section class="border-b border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-10">
+      <p class="eyebrow text-graphite/60">Three doors</p>
+      <div class="mt-10 grid grid-cols-1 gap-px bg-hairline md:grid-cols-3">
+        <a href="/en/partners" class="group bg-canvas p-9 transition-colors hover:bg-neutral-50">
+          <h2 class="font-display text-2xl font-medium text-ink">Capital</h2>
+          <p class="mt-4 text-base leading-relaxed text-graphite">
             A de-risked, methodology-backed coalition play toward defined Canadian futures.
           </p>
+          <span class="accent-link mt-6 inline-block text-sm font-medium">For capital &rarr;</span>
         </a>
-        <a href="/en/partners" class="group bg-white p-8 transition-colors hover:bg-neutral-50">
-          <h2 class="text-lg font-semibold text-neutral-900">Institutions</h2>
-          <p class="mt-3 text-sm text-neutral-600">
+        <a href="/en/partners" class="group bg-canvas p-9 transition-colors hover:bg-neutral-50">
+          <h2 class="font-display text-2xl font-medium text-ink">Institutions</h2>
+          <p class="mt-4 text-base leading-relaxed text-graphite">
             Bring your research and your alumni to a district built for actualizing Canada's futures.
           </p>
+          <span class="accent-link mt-6 inline-block text-sm font-medium">For institutions &rarr;</span>
         </a>
-        <a href="/en/partners" class="group bg-white p-8 transition-colors hover:bg-neutral-50">
-          <h2 class="text-lg font-semibold text-neutral-900">Founders</h2>
-          <p class="mt-3 text-sm text-neutral-600">
+        <a href="/en/partners" class="group bg-canvas p-9 transition-colors hover:bg-neutral-50">
+          <h2 class="font-display text-2xl font-medium text-ink">Founders</h2>
+          <p class="mt-4 text-base leading-relaxed text-graphite">
             Place, peers, mission, and mentorship, alongside top researchers in Markham.
           </p>
+          <span class="accent-link mt-6 inline-block text-sm font-medium">For founders &rarr;</span>
         </a>
       </div>
     </div>
@@ -84,8 +99,8 @@ import Main from "../../layouts/Main.astro";
 
   <!-- Credibility strip -->
   <section>
-    <div class="mx-auto max-w-6xl px-6 py-16">
-      <p class="max-w-3xl text-lg text-neutral-700">
+    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-10">
+      <p class="max-w-4xl text-xl leading-relaxed text-graphite">
         Venture-studio pioneer since 2013. A proven Hybrid Intelligence&trade; methodology. A
         research-backed problem statement and a sized, multi-trillion-dollar opportunity.
       </p>

@@ -1,5 +1,6 @@
 ---
 import Main from "../../layouts/Main.astro";
+import PageHeader from "../../components/PageHeader.astro";
 ---
 
 <Main
@@ -8,31 +9,37 @@ import Main from "../../layouts/Main.astro";
   lang="en"
   activePath="/district"
 >
-  <section class="border-b border-neutral-200">
-    <div class="mx-auto max-w-3xl px-6 py-20">
-      <h1 class="text-4xl font-semibold tracking-tight text-neutral-900">
-        The HI-Tech Innovation District
-      </h1>
+  <PageHeader
+    eyebrow="The district"
+    title="The HI-Tech Innovation District."
+    lead="A dense, mixed-use, arcology-like district on 89 acres in Markham. On-site innovator residency, labs, greenhouses, a sovereign-compute test-bed, and a battery-recycling facility."
+  />
 
-      <div class="mt-10 space-y-6 text-lg leading-relaxed text-neutral-700">
-        <p>
-          The HI-Tech Innovation District is a dense, mixed-use, arcology-like district on 89 acres
-          in Markham, with on-site innovator residency, labs, greenhouses for food sovereignty, a
-          sovereign-compute test-bed, and a battery-recycling facility.
+  <section class="border-b border-hairline">
+    <div class="mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-12 lg:px-10">
+      <div class="lg:col-span-3">
+        <p class="eyebrow text-graphite/60">The five-year proof</p>
+      </div>
+      <div class="lg:col-span-9">
+        <p class="max-w-3xl text-2xl leading-snug text-ink">
+          In five years this land will hold working labs, greenhouses, a sovereign-compute
+          test-bed, and a battery-recycling facility. Concrete, revenue-generating, and visible.
         </p>
       </div>
+    </div>
+  </section>
 
-      <h2 class="mt-16 text-2xl font-semibold text-neutral-900">The five-year proof</h2>
-      <p class="mt-6 text-lg leading-relaxed text-neutral-700">
-        In five years this land will hold working labs, greenhouses, a sovereign-compute test-bed,
-        and a battery-recycling facility. Concrete, revenue-generating, and visible.
-      </p>
-
-      <h2 class="mt-16 text-2xl font-semibold text-neutral-900">Why a district, not a park</h2>
-      <p class="mt-6 text-lg leading-relaxed text-neutral-700">
-        We build the founder pipeline first, then the buildings. A district earns its density from
-        the people and ventures inside it, not from the real estate.
-      </p>
+  <section>
+    <div class="mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-12 lg:px-10">
+      <div class="lg:col-span-3">
+        <p class="eyebrow text-graphite/60">Why a district, not a park</p>
+      </div>
+      <div class="lg:col-span-9">
+        <p class="max-w-3xl text-2xl leading-snug text-ink">
+          We build the founder pipeline first, then the buildings. A district earns its density
+          from the people and ventures inside it, not from the real estate.
+        </p>
+      </div>
     </div>
   </section>
 </Main>
