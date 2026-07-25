@@ -2,6 +2,7 @@
 import Main from "../../layouts/Main.astro";
 import PageHeader from "../../components/PageHeader.astro";
 import StatCounter from "../../components/StatCounter.astro";
+import Placeholder from "../../components/Placeholder.astro";
 ---
 
 <Main
@@ -50,6 +51,44 @@ import StatCounter from "../../components/StatCounter.astro";
           { value: "2", label: "Doctoral programs" },
         ]}
       />
+    </div>
+  </section>
+
+  <!-- Founder / leadership -->
+  <section class="border-t border-hairline">
+    <div class="mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-2 lg:px-10">
+      <Placeholder
+        kind="image"
+        ratio="4/5"
+        label="Professional portrait of Francis Wang (founder)"
+        note="A single credible headshot. Councillors and capital partners look for a real face behind the proponent."
+      />
+      <div>
+        <p class="eyebrow text-graphite/60">Leadership</p>
+        <h2 class="font-display mt-6 text-3xl font-medium leading-tight text-ink sm:text-4xl">
+          Francis Wang
+        </h2>
+        <p class="mt-5 text-lg leading-relaxed text-graphite">
+          Founder of SyncID Labs. Venture-studio operator, doctoral researcher, and the architect
+          of the actualizer method. Two venture exits, doctoral work under review at Waterloo and
+          Calgary, and a decade inside the Canadian innovation gap.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Affiliations wall -->
+  <section class="border-t border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <p class="eyebrow text-graphite/60">Affiliations and networks</p>
+      <div class="mt-8">
+        <Placeholder
+          kind="image"
+          ratio="21/9"
+          label="Institution logo wall: Waterloo, Calgary, UofT, TMU, Quantic, Golden Gate"
+          note="A grayscale logo grid, subject to permission. Signals institutional grounding without overclaiming endorsement."
+        />
+      </div>
     </div>
   </section>
 </Main>

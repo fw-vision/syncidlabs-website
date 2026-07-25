@@ -1,6 +1,7 @@
 ---
 import Main from "../../layouts/Main.astro";
 import PageHeader from "../../components/PageHeader.astro";
+import Placeholder from "../../components/Placeholder.astro";
 
 const steps = [
   {
@@ -36,12 +37,14 @@ const diff = [
   <PageHeader
     eyebrow="The actualizer method"
     title="A methodology that proves itself as it grows."
-    lead="Our approach, Hybrid Intelligence™ and CITAble™ assessment, is self-evaluating."
+    lead="Our approach, Hybrid Intelligence&trade; and CITAble&trade; assessment, is self-evaluating."
   />
 
+  <!-- The three-step method -->
   <section class="border-b border-hairline">
     <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
-      <div class="grid grid-cols-1 gap-px bg-hairline md:grid-cols-3">
+      <p class="eyebrow text-graphite/60">The method, in three steps</p>
+      <div class="mt-10 grid grid-cols-1 gap-px bg-hairline md:grid-cols-3">
         {
           steps.map((s) => (
             <div class="bg-canvas p-9">
@@ -57,6 +60,53 @@ const diff = [
     </div>
   </section>
 
+  <!-- Hybrid Intelligence concept -->
+  <section class="border-b border-hairline">
+    <div class="mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-2 lg:px-10">
+      <div>
+        <p class="eyebrow text-graphite/60">Hybrid Intelligence&trade;</p>
+        <h2 class="font-display mt-6 text-3xl font-medium leading-tight text-ink sm:text-4xl">
+          Humans at the centre, agentic systems at scale.
+        </h2>
+        <p class="mt-5 text-lg leading-relaxed text-graphite">
+          Human governance and judgment paired with AI fleets that carry the volume. The pairing,
+          not the replacement, is what makes the method credible and repeatable.
+        </p>
+      </div>
+      <Placeholder
+        kind="data"
+        ratio="4/3"
+        label="Hybrid Intelligence diagram: humans (governance/judgment) paired with agentic scale"
+        note="Candidate for a fw-vision dataviz widget: a pairing/augmentation visual, not replacement."
+      />
+    </div>
+  </section>
+
+  <!-- CITAble assessment -->
+  <section class="border-b border-hairline">
+    <div class="mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-2 lg:px-10">
+      <Placeholder
+        kind="data"
+        ratio="4/3"
+        label="CITAble assessment loop: define, build, evaluate, co-evolve"
+        note="A cyclical diagram showing the self-evaluating loop. Could reuse the CITEMap / index-radar widgets."
+        dark={false}
+      />
+      <div class="lg:order-first lg:hidden"></div>
+      <div>
+        <p class="eyebrow text-graphite/60">CITAble&trade; assessment</p>
+        <h2 class="font-display mt-6 text-3xl font-medium leading-tight text-ink sm:text-4xl">
+          A district that measures itself as it grows.
+        </h2>
+        <p class="mt-5 text-lg leading-relaxed text-graphite">
+          CITAble assessment co-evolves with outcomes. The evaluation is not a report at the end;
+          it is a loop that steers what we build next.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Differentiation -->
   <section>
     <div class="mx-auto max-w-3xl px-6 py-20 lg:px-10">
       <p class="eyebrow text-graphite/60">How we differ</p>

@@ -1,6 +1,46 @@
 ---
 import Main from "../../layouts/Main.astro";
 import PageHeader from "../../components/PageHeader.astro";
+import StatCounter from "../../components/StatCounter.astro";
+import Placeholder from "../../components/Placeholder.astro";
+import MediaCTA from "../../components/MediaCTA.astro";
+import { IMG_DISTRICT } from "../../data/media";
+
+// The five-year proof: concrete, revenue-generating facilities.
+const facilities = [
+  {
+    name: "Innovator residency",
+    body: "On-site lodging so founders and researchers live where they build.",
+    img: "aerial or interior of mixed-use residential-lab block",
+  },
+  {
+    name: "Labs",
+    body: "Shared wet and dry labs for venture and university research.",
+    img: "modern research lab interior",
+  },
+  {
+    name: "Greenhouses",
+    body: "Controlled-environment agriculture proving food sovereignty at scale.",
+    img: "vertical farm / greenhouse interior",
+  },
+  {
+    name: "Sovereign-compute test-bed",
+    body: "Distributed, dual-use compute Canada owns and controls.",
+    img: "small-scale modular data hall / compute pods",
+  },
+  {
+    name: "Battery recycling",
+    body: "Retired EV battery remanufacturing extending life 5 to 10 years.",
+    img: "battery remanufacturing / cleantech facility",
+  },
+];
+
+// The 50-year phased horizon.
+const horizons = [
+  { phase: "H1", span: "5 to 10 years", body: "The five-year proof: residency, labs, greenhouses, compute test-bed, battery recycling." },
+  { phase: "H2", span: "10 to 20 years", body: "Coalitions scale; blended funds per future; the district reaches critical density." },
+  { phase: "H3", span: "30 years and beyond", body: "A self-sustaining innovation district anchoring Canadian sovereignty." },
+];
 ---
 
 <Main
@@ -15,21 +55,57 @@ import PageHeader from "../../components/PageHeader.astro";
     lead="A dense, mixed-use, arcology-like district on 89 acres in Markham. On-site innovator residency, labs, greenhouses, a sovereign-compute test-bed, and a battery-recycling facility."
   />
 
+  <!-- Hero visual: the site itself -->
   <section class="border-b border-hairline">
-    <div class="mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-12 lg:px-10">
-      <div class="lg:col-span-3">
-        <p class="eyebrow text-graphite/60">The five-year proof</p>
-      </div>
-      <div class="lg:col-span-9">
-        <p class="max-w-3xl text-2xl leading-snug text-ink">
-          In five years this land will hold working labs, greenhouses, a sovereign-compute
-          test-bed, and a battery-recycling facility. Concrete, revenue-generating, and visible.
-        </p>
+    <div class="mx-auto max-w-7xl px-6 py-12 lg:px-10">
+      <Placeholder
+        kind="image"
+        ratio="21/9"
+        label="Aerial view of the 89-acre Markham site (or a massing render of the district vision)"
+        note="The single most important image on the site for civic credibility. Prefer a real aerial of the land or a commissioned massing/arcology render."
+      />
+    </div>
+  </section>
+
+  <!-- Key stats -->
+  <section class="border-b border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <StatCounter
+        stats={[
+          { value: "89", label: "Acres in Markham" },
+          { value: "5", label: "Anchor facilities" },
+          { value: "50yr", label: "Phased horizon" },
+          { value: "H1", label: "Building now" },
+        ]}
+      />
+    </div>
+  </section>
+
+  <!-- The five-year proof: facilities grid -->
+  <section class="border-b border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <p class="eyebrow text-graphite/60">The five-year proof</p>
+      <h2 class="font-display mt-6 max-w-3xl text-3xl font-medium leading-tight text-ink sm:text-4xl">
+        Concrete, revenue-generating, and visible in five years.
+      </h2>
+      <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {
+          facilities.map((f) => (
+            <div class="border border-hairline bg-canvas">
+              <Placeholder kind="image" ratio="4/3" label={f.img} />
+              <div class="p-6">
+                <h3 class="font-display text-xl font-medium text-ink">{f.name}</h3>
+                <p class="mt-3 text-base leading-relaxed text-graphite">{f.body}</p>
+              </div>
+            </div>
+          ))
+        }
       </div>
     </div>
   </section>
 
-  <section>
+  <!-- Why a district, not a park -->
+  <section class="border-b border-hairline">
     <div class="mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-12 lg:px-10">
       <div class="lg:col-span-3">
         <p class="eyebrow text-graphite/60">Why a district, not a park</p>
@@ -42,4 +118,42 @@ import PageHeader from "../../components/PageHeader.astro";
       </div>
     </div>
   </section>
+
+  <!-- Phased horizon timeline -->
+  <section class="border-b border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <p class="eyebrow text-graphite/60">The 50-year phased horizon</p>
+      <div class="mt-10 grid grid-cols-1 gap-px bg-hairline md:grid-cols-3">
+        {
+          horizons.map((h) => (
+            <div class="bg-canvas p-8">
+              <div class="flex items-baseline gap-3">
+                <span class="font-display text-3xl font-semibold" style="color: var(--wk-accent);">
+                  {h.phase}
+                </span>
+                <span class="text-sm text-graphite">{h.span}</span>
+              </div>
+              <p class="mt-4 text-base leading-relaxed text-graphite">{h.body}</p>
+            </div>
+          ))
+        }
+      </div>
+      <div class="mt-10">
+        <Placeholder
+          kind="data"
+          ratio="21/9"
+          label="Phased master-plan diagram or site map (H1 / H2 / H3 build-out)"
+          note="A simple annotated site plan or timeline graphic. Could be produced with the fw-vision dataviz widgets."
+        />
+      </div>
+    </div>
+  </section>
+
+  <MediaCTA
+    image={IMG_DISTRICT}
+    eyebrow="A legacy for the city"
+    headline="The district a civic leader is remembered for bringing to Markham."
+    ctaLabel="Start a conversation"
+    ctaHref="/en/contact"
+  />
 </Main>
