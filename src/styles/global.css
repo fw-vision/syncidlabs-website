@@ -86,3 +86,107 @@ a {
 .accent-link:hover::after {
   transform: scaleX(1);
 }
+
+/* ---- Sticky nav states ---- */
+
+/* Solid nav (interior pages): dark text on light. */
+#site-header.is-solid .brand-text,
+#site-header.is-solid .nav-link {
+  color: var(--color-graphite);
+}
+#site-header.is-solid .brand-text {
+  color: var(--color-ink);
+}
+#site-header.is-solid .nav-link:hover {
+  color: var(--color-ink);
+}
+#site-header.is-solid .nav-locale {
+  color: color-mix(in srgb, var(--color-graphite) 50%, transparent);
+}
+#site-header.is-solid .nav-locale.is-active,
+#site-header.is-solid .nav-locale:hover {
+  color: var(--color-ink);
+}
+
+/* Hero nav (home): transparent over the dark hero, white text. */
+#site-header.is-hero {
+  background: transparent;
+  border-color: transparent;
+}
+#site-header.is-hero .brand-text,
+#site-header.is-hero .nav-link {
+  color: rgba(255, 255, 255, 0.85);
+}
+#site-header.is-hero .brand-text span[style] {
+  /* keep the I&D accent visible on dark */
+  filter: brightness(1.6);
+}
+#site-header.is-hero .nav-link:hover {
+  color: #fff;
+}
+#site-header.is-hero .nav-locale {
+  color: rgba(255, 255, 255, 0.55);
+}
+#site-header.is-hero .nav-locale.is-active,
+#site-header.is-hero .nav-locale:hover {
+  color: #fff;
+}
+
+/* Hero nav after scrolling past the hero: becomes solid light. */
+#site-header.is-hero.scrolled {
+  background: color-mix(in srgb, var(--color-canvas) 90%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-hairline);
+}
+#site-header.is-hero.scrolled .brand-text,
+#site-header.is-hero.scrolled .nav-link {
+  color: var(--color-graphite);
+}
+#site-header.is-hero.scrolled .brand-text {
+  color: var(--color-ink);
+}
+#site-header.is-hero.scrolled .brand-text span[style] {
+  filter: none;
+}
+#site-header.is-hero.scrolled .nav-link:hover {
+  color: var(--color-ink);
+}
+#site-header.is-hero.scrolled .nav-locale {
+  color: color-mix(in srgb, var(--color-graphite) 50%, transparent);
+}
+#site-header.is-hero.scrolled .nav-locale.is-active,
+#site-header.is-hero.scrolled .nav-locale:hover {
+  color: var(--color-ink);
+}
+
+/* Because the header is fixed, interior pages need top offset. Home supplies its own hero spacing. */
+body:not(.has-hero) main {
+  padding-top: 5rem;
+}
+
+/* ---- Media band helpers ---- */
+.media-band {
+  position: relative;
+  overflow: hidden;
+}
+.media-band__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.media-band__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 8, 8, 0.55) 0%,
+    rgba(10, 8, 8, 0.35) 50%,
+    rgba(10, 8, 8, 0.7) 100%
+  );
+}
+.media-band__content {
+  position: relative;
+  z-index: 1;
+}

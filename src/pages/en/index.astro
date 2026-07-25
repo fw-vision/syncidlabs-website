@@ -1,5 +1,7 @@
 ---
 import Main from "../../layouts/Main.astro";
+import Wordmark from "../../components/Wordmark.astro";
+import { HERO_VIDEO, HERO_POSTER, IMG_DISTRICT, IMG_LAND } from "../../data/media";
 ---
 
 <Main
@@ -7,17 +9,31 @@ import Main from "../../layouts/Main.astro";
   description="SyncID Labs builds the innovation district, the founder and research pipelines, and the coalitions of ventures that turn foresight into a sovereign, economically powerful Canada."
   lang="en"
   activePath="/"
+  heroNav={true}
 >
-  <!-- Hero (dark band) -->
-  <section class="bg-ink text-white">
-    <div class="mx-auto max-w-7xl px-6 py-28 sm:py-36 lg:px-10">
-      <p class="eyebrow text-white/50">Synchronous Incubation and Development Labs</p>
+  <!-- Hero: full-bleed media band with dark scrim -->
+  <section class="media-band bg-ink text-white">
+    <video
+      class="media-band__media"
+      autoplay
+      muted
+      loop
+      playsinline
+      poster={HERO_POSTER}
+    >
+      <source src={HERO_VIDEO} type="video/mp4" />
+    </video>
+    <div class="media-band__scrim"></div>
+
+    <div class="media-band__content mx-auto max-w-7xl px-6 pb-28 pt-40 sm:pt-48 lg:px-10 lg:pb-36">
+      <Wordmark variant="hero" />
+
       <h1
-        class="font-display mt-8 max-w-5xl text-5xl font-medium leading-[1.03] tracking-[-0.03em] sm:text-6xl lg:text-[5.25rem]"
+        class="font-display mt-12 max-w-5xl text-4xl font-medium leading-[1.05] tracking-[-0.03em] sm:text-5xl lg:text-[4.75rem]"
       >
         SyncID Labs actualizes Canada's strategic futures.
       </h1>
-      <p class="mt-8 max-w-2xl text-lg leading-relaxed text-white/70 sm:text-xl">
+      <p class="mt-8 max-w-2xl text-lg leading-relaxed text-white/75 sm:text-xl">
         We build the innovation district, the founder and research pipelines, and the coalitions
         of ventures that turn foresight into a sovereign, economically powerful Canada.
       </p>
@@ -36,7 +52,7 @@ import Main from "../../layouts/Main.astro";
     </div>
   </section>
 
-  <!-- The stakes (oversized editorial statement) -->
+  <!-- The stakes -->
   <section class="border-b border-hairline">
     <div class="mx-auto max-w-7xl px-6 py-24 lg:px-10">
       <p class="eyebrow text-graphite/60">The stakes</p>
@@ -49,21 +65,19 @@ import Main from "../../layouts/Main.astro";
     </div>
   </section>
 
-  <!-- The district -->
-  <section class="border-b border-hairline">
-    <div class="mx-auto grid max-w-7xl gap-10 px-6 py-24 lg:grid-cols-12 lg:px-10">
-      <div class="lg:col-span-3">
-        <p class="eyebrow text-graphite/60">The district</p>
-      </div>
-      <div class="lg:col-span-9">
-        <p class="max-w-3xl text-2xl leading-snug text-ink">
-          A dense, mixed-use innovation district on 89 acres in Markham, built to keep Canadian
-          talent, IP, and value at home.
-        </p>
-        <a href="/en/district" class="accent-link mt-6 inline-block text-sm font-medium">
-          Explore the district
-        </a>
-      </div>
+  <!-- Full-bleed district image band -->
+  <section class="media-band bg-ink text-white">
+    <img class="media-band__media" src={IMG_DISTRICT} alt="" loading="lazy" />
+    <div class="media-band__scrim"></div>
+    <div class="media-band__content mx-auto max-w-7xl px-6 py-32 lg:px-10 lg:py-40">
+      <p class="eyebrow text-white/50">The district</p>
+      <p class="font-display mt-6 max-w-3xl text-2xl leading-snug sm:text-3xl">
+        A dense, mixed-use innovation district on 89 acres in Markham, built to keep Canadian
+        talent, IP, and value at home.
+      </p>
+      <a href="/en/district" class="mt-6 inline-block text-sm font-medium text-white/80 hover:text-white">
+        Explore the district &rarr;
+      </a>
     </div>
   </section>
 
