@@ -1,4 +1,28 @@
 ---
-// Root redirect to default locale
-return Astro.redirect("/en/");
+/**
+ * Root entry for GitHub Pages. Astro.redirect() on static output emits a
+ * 2-second meta-refresh interstitial ("Redirecting from / to /en"). Emit an
+ * immediate hop instead so the flash is imperceptible.
+ */
 ---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content="0;url=/en/" />
+    <link rel="canonical" href="https://syncidlabs.com/en/" />
+    <title>SyncI&amp;DLabs</title>
+    <script is:inline>
+      location.replace("/en/");
+    </script>
+    <style>
+      html,
+      body {
+        margin: 0;
+        background: #ffffff;
+      }
+    </style>
+  </head>
+  <body></body>
+</html>

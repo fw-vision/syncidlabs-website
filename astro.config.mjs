@@ -45,7 +45,10 @@ export default defineConfig({
     defaultLocale: 'en',
     locales: ['en', 'fr', 'zh'],
     routing: {
-      prefixDefaultLocale: true
-    }
-  }
+      prefixDefaultLocale: true,
+      // Astro's auto root redirect is a 2s meta-refresh on static hosts.
+      // Disable it; src/pages/index.astro does an instant hop instead.
+      redirectToDefaultLocale: false,
+    },
+  },
 });
