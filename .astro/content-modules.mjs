@@ -1,1 +1,12 @@
-export default new Map();
+
+export default new Map([
+["src/content/insights/build-to-manage.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Finsights%2Fbuild-to-manage.mdx&astroContentModuleFlag=true")],
+["src/content/insights/designing-resilient-neighbourhoods.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Finsights%2Fdesigning-resilient-neighbourhoods.mdx&astroContentModuleFlag=true")],
+["src/content/insights/data-centre-good-neighbour.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Finsights%2Fdata-centre-good-neighbour.mdx&astroContentModuleFlag=true")],
+["src/content/insights/innovation-sanctuary.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Finsights%2Finnovation-sanctuary.mdx&astroContentModuleFlag=true")],
+["src/content/insights/tripartite-ecosystem-model.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Finsights%2Ftripartite-ecosystem-model.mdx&astroContentModuleFlag=true")],
+["src/content/insights/canadas-innovation-paradox.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Finsights%2Fcanadas-innovation-paradox.mdx&astroContentModuleFlag=true")],
+["src/content/insights/long-term-strategic-venture-capital.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Finsights%2Flong-term-strategic-venture-capital.mdx&astroContentModuleFlag=true")],
+["src/content/insights/innovation-sovereignty.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Finsights%2Finnovation-sovereignty.mdx&astroContentModuleFlag=true")],
+["src/content/insights/the-missing-layer-pre-commercialization.mdx", () => import("astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fcontent%2Finsights%2Fthe-missing-layer-pre-commercialization.mdx&astroContentModuleFlag=true")]]);
+		

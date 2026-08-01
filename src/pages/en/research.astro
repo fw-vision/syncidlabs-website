@@ -1,12 +1,14 @@
 ---
 import Main from "../../layouts/Main.astro";
 import PageHeader from "../../components/PageHeader.astro";
-import Placeholder from "../../components/Placeholder.astro";
+import { regionalProfiles, waterlooDeepDive } from "../../data/ecosystem-insights";
+import { BAN_RESEARCH, IMG_LAND } from "../../data/media";
 
-const stats = [
+// The verified problem statement: primary-sourced macro indicators.
+const evidence = [
   {
     value: "71%",
-    claim: "Canadian productivity has fallen to 71% of the US level.",
+    claim: "Canadian productivity has fallen to 71% of the US level, down from 88% in 1984.",
     source: "Bank of Canada, 2024",
   },
   {
@@ -19,8 +21,7 @@ const stats = [
     claim:
       "Canadians made more than 1.2 million TN professional-work entries into the United States in fiscal 2023.",
     source: "US Department of Homeland Security",
-    caveat:
-      "These are admissions, not distinct individuals; one person may enter multiple times.",
+    caveat: "These are admissions, not distinct individuals; one person may enter multiple times.",
   },
   {
     value: "44.3%",
@@ -31,37 +32,40 @@ const stats = [
 ---
 
 <Main
-  title="The Evidence - SyncID Labs"
-  description="The verified problem statement behind SyncID Labs: productivity, R&D intensity, skilled emigration, and foreign control. Every figure sourced."
+  title="The Canadian Gap - SyncI&DLabs"
+  description="The verified problem statement and critical ecosystem analysis behind SyncI&DLabs: productivity, R&D intensity, skilled emigration, and foreign control, plus national and regional readings of where Canada generates value and where it leaks."
   lang="en"
   activePath="/research"
 >
   <PageHeader
-    eyebrow="The evidence"
-    title="Canada generates world-class research and talent, then loses the value of both."
-    lead="The problem statement below is verified. Every figure is sourced."
+    eyebrow="The Canadian Gap"
+    title="Strong inputs, weak outcomes."
+    lead="Canada generates world-class research and talent, then loses the value of both. The evidence is verified and primary-sourced. The analysis below reads the gap nationally, then region by region."
+    image={BAN_RESEARCH}
+    imageAlt="Editorial research materials on a pale desk"
   />
-
-  <!-- Lead data visual: the gap at a glance -->
-  <section class="border-b border-hairline">
-    <div class="mx-auto max-w-7xl px-6 py-12 lg:px-10">
-      <Placeholder
-        kind="data"
-        ratio="21/9"
-        label="Headline chart: Canadian productivity vs US (or R&D intensity vs OECD), 2000 to 2024"
-        note="A single authoritative chart that makes the gap legible at a glance. Source data from Bank of Canada / StatCan; render with fw-vision dataviz."
-      />
-    </div>
-  </section>
 
   <section class="border-b border-hairline">
     <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10">
-      <p class="eyebrow text-graphite/60">The five gaps, verified</p>
-      <div class="mt-8 grid grid-cols-1 gap-px bg-hairline md:grid-cols-2">
+      <p class="eyebrow text-graphite/60">The measured gap</p>
+      <h2 class="font-display mt-6 max-w-4xl text-3xl font-medium leading-tight text-ink sm:text-4xl">
+        Four figures the country's own institutions report.
+      </h2>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-graphite">
+        The Council of Canadian Academies (2025) reports the same pattern at a systemic level:
+        Canada excels in research and falls short in retaining the value of its innovations. These
+        are the gaps between what the country makes and what it keeps.
+      </p>
+      <div class="mt-12 grid grid-cols-1 gap-px bg-hairline md:grid-cols-2">
         {
-          stats.map((s) => (
+          evidence.map((s) => (
             <div class="bg-canvas p-9">
-              <p class="font-display text-4xl font-medium text-ink lg:text-5xl">{s.value}</p>
+              <p
+                class="font-display text-4xl font-medium lg:text-5xl"
+                style="color: var(--wk-accent);"
+              >
+                {s.value}
+              </p>
               <p class="mt-4 text-lg leading-relaxed text-ink">{s.claim}</p>
               <p class="mt-4 text-sm font-medium text-graphite">{s.source}</p>
               {s.caveat && <p class="mt-1 text-sm italic text-graphite/70">{s.caveat}</p>}
@@ -69,23 +73,88 @@ const stats = [
           ))
         }
       </div>
-      <p class="mt-10 max-w-3xl text-base leading-relaxed text-graphite">
-        The Council of Canadian Academies (2025) reports the same pattern at a systemic level:
-        strong inputs, weak outcomes.
+    </div>
+  </section>
+
+  <!-- Mid-page reading band: deep hairline-family grey, white type -->
+  <section
+    class="text-white"
+    style="background-color: color-mix(in oklch, var(--color-hairline) 20%, var(--color-ink) 80%);"
+  >
+    <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-20">
+      <p class="eyebrow text-white/50">The reading</p>
+      <p class="font-display mt-5 max-w-3xl text-2xl font-normal leading-snug tracking-tight sm:text-3xl">
+        Each region has real strengths. Each leaks value at the moment of scale. We name the places
+        and the gap so the opportunity stays specific.
+      </p>
+    </div>
+  </section>
+
+  <section class="border-b border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+      <p class="eyebrow text-graphite/60">Regional profiles</p>
+      <h2 class="font-display mt-6 max-w-3xl text-3xl font-medium leading-tight text-ink sm:text-4xl">
+        Five ecosystems, one pattern.
+      </h2>
+      <div class="mt-12 space-y-0 border-t border-hairline">
+        {
+          regionalProfiles.map((r) => (
+            <article class="border-b border-hairline py-12">
+              <h3 class="font-display text-2xl font-medium text-ink">{r.region}</h3>
+              <div class="mt-8 grid grid-cols-1 gap-8 md:grid-cols-3">
+                <div>
+                  <p class="eyebrow text-graphite/60">Strengths</p>
+                  <p class="mt-3 text-base leading-relaxed text-graphite">{r.strengths}</p>
+                </div>
+                <div>
+                  <p class="eyebrow text-graphite/60">Leaks</p>
+                  <p class="mt-3 text-base leading-relaxed text-graphite">{r.leaks}</p>
+                </div>
+                <div>
+                  <p class="eyebrow text-graphite/60">Opportunity</p>
+                  <p class="mt-3 text-base leading-relaxed text-graphite">{r.opportunity}</p>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Image punctuation before Waterloo -->
+  <section class="media-band min-h-[240px] bg-ink text-white sm:min-h-[320px]">
+    <img class="media-band__media" src={IMG_LAND} alt="" loading="lazy" />
+    <div class="media-band__scrim"></div>
+    <div class="media-band__content mx-auto flex max-w-7xl items-end px-6 py-14 lg:px-10 lg:py-16">
+      <p class="font-display max-w-xl text-2xl font-normal leading-snug sm:text-3xl">
+        Waterloo is the worked example: generation without full capture.
       </p>
     </div>
   </section>
 
   <section>
-    <div class="mx-auto max-w-3xl px-6 py-20 lg:px-10">
-      <p class="eyebrow text-graphite/60">The opportunity</p>
-      <p class="mt-6 text-2xl leading-snug text-ink">
-        Canada's long-horizon potential is measured in the multiple trillions of dollars.
+    <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+      <p class="eyebrow text-graphite/60">Waterloo deep dive</p>
+      <h2 class="font-display mt-6 max-w-4xl text-3xl font-medium leading-tight text-ink sm:text-4xl">
+        The worked example of generation without full capture.
+      </h2>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-graphite">
+        {waterlooDeepDive.thesis}
       </p>
-      <p class="mt-5 text-lg leading-relaxed text-graphite">
-        We treat this as a scenario range, not a forecast. The precedent is close to home: the
-        Waterloo region generated tens of billions in value between 2013 and 2023. A district that
-        keeps talent, IP, and ventures at home can do the same, deliberately.
+      <div class="mt-12 grid grid-cols-1 gap-px bg-hairline md:grid-cols-2 lg:grid-cols-3">
+        {
+          waterlooDeepDive.institutions.map((inst) => (
+            <div class="bg-canvas p-8">
+              <h3 class="font-display text-xl font-medium text-ink">{inst.name}</h3>
+              <p class="mt-3 text-base leading-relaxed text-graphite">{inst.line}</p>
+            </div>
+          ))
+        }
+      </div>
+      <p class="mt-10 max-w-2xl text-base leading-relaxed text-graphite">
+        Retention-versus-capture is the open operational question. We bind formation to
+        actualization so more of the value compounds in Canada.
       </p>
     </div>
   </section>

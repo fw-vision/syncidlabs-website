@@ -2,16 +2,19 @@
 import Main from "../../layouts/Main.astro";
 import Wordmark from "../../components/Wordmark.astro";
 import Ticker from "../../components/Ticker.astro";
+import LogoTicker from "../../components/LogoTicker.astro";
 import StatCounter from "../../components/StatCounter.astro";
-import { HERO_VIDEO, HERO_POSTER, IMG_DISTRICT, IMG_LAND } from "../../data/media";
+import { HERO_VIDEO, HERO_POSTER, IMG_DISTRICT } from "../../data/media";
+import { communities } from "../../data/advisors";
 ---
 
 <Main
-  title="SyncID Labs - Actualizing Canada's strategic futures"
-  description="SyncID Labs builds the innovation district, the founder and research pipelines, and the coalitions of ventures that turn foresight into a sovereign, economically powerful Canada."
+  title="SyncI&DLabs - Ecosystem expertise. Canadian futures actualized."
+  description="SyncI&DLabs understands Canada's innovation ecosystems, sees where Canada wins, and actualizes those opportunities through innovation districts across Canada that follow the CITAble business framework."
   lang="en"
   activePath="/"
   heroNav={true}
+  tightFooter={true}
 >
   <!-- Hero: full-bleed media band with dark scrim -->
   <section class="media-band bg-ink text-white">
@@ -33,40 +36,102 @@ import { HERO_VIDEO, HERO_POSTER, IMG_DISTRICT, IMG_LAND } from "../../data/medi
       <h1
         class="font-display mt-12 max-w-5xl text-4xl font-medium leading-[1.05] tracking-[-0.03em] sm:text-5xl lg:text-[4.75rem]"
       >
-        SyncID Labs actualizes Canada's strategic futures.
+        Actualizing Canada's strategic futures.
       </h1>
       <p class="mt-8 max-w-2xl text-lg leading-relaxed text-white/75 sm:text-xl">
-        We build the innovation district, the founder and research pipelines, and the coalitions
-        of ventures that turn foresight into a sovereign, economically powerful Canada.
+        We understand Canada's innovation ecosystems. We see where Canada wins. We build the
+        district, pipelines, and coalitions that turn that reading into sovereign capacity.
       </p>
       <div class="mt-12 flex flex-wrap items-center gap-6">
         <a
           href="/en/contact"
-          class="inline-flex items-center px-7 py-3.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
-          style="background-color: var(--wk-accent);"
+          class="inline-flex items-center px-7 py-3.5 text-sm font-medium text-ink transition-opacity hover:opacity-90"
+          style="background-color: var(--wk-accent-on-dark);"
         >
           Start a conversation
         </a>
-        <a href="/en/district" class="text-sm font-medium text-white/80 hover:text-white">
-          See the district &rarr;
+        <a href="/en/research" class="text-sm font-medium text-white/80 hover:text-white">
+          Read the Canadian Gap analysis &rarr;
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Ticker: the futures we actualize -->
   <Ticker
     items={[
+      "Sovereign energy and compute",
+      "Resilient neighbourhoods",
       "Food sovereignty",
-      "Sovereign compute",
-      "Climate tech",
-      "Future of work",
-      "Education",
-      "Health and femtech",
-      "Deep tech and robotics",
+      "Advanced manufacturing and Industry 4.0",
+      "Arctic sovereignty",
+      "Quantum and emerging technologies",
+      "Health and precision health",
+      "The CITAble methodology",
     ]}
     dark={false}
   />
+
+  <!-- Thesis: ecosystem expert -->
+  <section class="border-b border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-10">
+      <p class="eyebrow text-graphite/60">Our thesis</p>
+      <p
+        class="font-display mt-6 max-w-4xl text-3xl font-normal leading-tight tracking-tight text-ink sm:text-4xl lg:text-5xl"
+      >
+        SyncI&DLabs understands Canada's innovation ecosystems and sees where Canada wins.
+      </p>
+      <p class="mt-8 max-w-2xl text-lg leading-relaxed text-graphite">
+        We read the country critically: where talent forms, where value leaks, and where a
+        district can keep IP, founders, and production at home. The district is the vehicle. The
+        expertise and the embedded network are the credibility.
+      </p>
+      <a href="/en/network" class="accent-link mt-8 inline-block text-sm font-medium">
+        Meet the embedded network &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- Energy-compute innovation arc -->
+  <section class="border-b border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-10">
+      <p class="eyebrow text-graphite/60">Why energy and compute</p>
+      <p
+        class="font-display mt-6 max-w-4xl text-3xl font-normal leading-tight tracking-tight text-ink sm:text-4xl"
+      >
+        All meaningful innovation at scale runs on electricity. The next phase runs on
+        electricity, compute, and agentic AI.
+      </p>
+      <div class="mt-12 grid max-w-5xl grid-cols-1 gap-px bg-hairline md:grid-cols-3">
+        <div class="bg-canvas p-8">
+          <p class="eyebrow text-graphite/60">Layer</p>
+          <p class="font-display mt-4 text-xl font-medium text-ink">Electricity</p>
+          <p class="mt-3 text-base leading-relaxed text-graphite">
+            The base substrate. Ontario's power position is a local unlock for scaled builds.
+          </p>
+        </div>
+        <div class="bg-canvas p-8">
+          <p class="eyebrow text-graphite/60">Layer</p>
+          <p class="font-display mt-4 text-xl font-medium text-ink">Compute and agentic AI</p>
+          <p class="mt-3 text-base leading-relaxed text-graphite">
+            Each new layer demands more of the layer beneath it, and in demanding it, unlocks
+            the next.
+          </p>
+        </div>
+        <div class="bg-canvas p-8">
+          <p class="eyebrow text-graphite/60">Claim</p>
+          <p class="font-display mt-4 text-xl font-medium text-ink">Own the substrate</p>
+          <p class="mt-3 text-base leading-relaxed text-graphite">
+            AI-native rides the wave. Owning the energy and compute beneath it owns every wave
+            that follows.
+          </p>
+        </div>
+      </div>
+      <p class="mt-10 max-w-2xl text-base leading-relaxed text-graphite">
+        Nobody knows if the next phase is quantum. Everybody knows it will need more energy and
+        more compute. We build the substrate.
+      </p>
+    </div>
+  </section>
 
   <!-- The stakes -->
   <section class="border-b border-hairline">
@@ -78,6 +143,10 @@ import { HERO_VIDEO, HERO_POSTER, IMG_DISTRICT, IMG_LAND } from "../../data/medi
         Canadian productivity has fallen to 71% of the US level.
       </p>
       <p class="mt-5 text-sm text-graphite">Bank of Canada, 2024</p>
+      <p class="mt-8 max-w-2xl text-base leading-relaxed text-graphite">
+        Strong inputs, weak outcomes. We treat the gap as a build problem, not a forecast.
+        <a href="/en/research" class="accent-link ml-1 text-sm font-medium">See the evidence &rarr;</a>
+      </p>
     </div>
   </section>
 
@@ -86,27 +155,48 @@ import { HERO_VIDEO, HERO_POSTER, IMG_DISTRICT, IMG_LAND } from "../../data/medi
     <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
       <StatCounter
         stats={[
-          { value: "89", label: "Acres in Markham" },
+          { value: "$3-5T", label: "Canada's 15-year potential" },
           { value: "2013", label: "Building since" },
-          { value: "7", label: "Strategic futures" },
+          { value: "8", label: "Strategic futures" },
           { value: "50yr", label: "Phased horizon" },
         ]}
       />
     </div>
   </section>
 
-  <!-- Full-bleed district image band -->
+  <!-- The opportunity: Canada's trillion-dollar potential -->
+  <section class="border-b border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-24 lg:px-10">
+      <p class="eyebrow text-graphite/60">The opportunity</p>
+      <p
+        class="font-display mt-6 max-w-4xl text-3xl font-normal leading-tight tracking-tight text-ink sm:text-4xl lg:text-5xl"
+      >
+        Canada is a multi-trillion-dollar opportunity over the coming decades.
+      </p>
+      <p class="mt-8 max-w-2xl text-lg leading-relaxed text-graphite">
+        Under a coordinated sovereignty scenario, the potential runs from three to five trillion
+        dollars over fifteen years and far higher on longer horizons. The same reading that first saw an estimated 25 to 40 billion dollars in one region now sees a country. The task is to build the coalitions
+        that keep the value here.
+      </p>
+      <p class="mt-4 max-w-2xl text-sm italic text-graphite/70">
+        Directional estimate under a sovereignty scenario, not a verified forecast.
+      </p>
+    </div>
+  </section>
+
+  <!-- District: the vehicle -->
   <section class="media-band bg-ink text-white">
     <img class="media-band__media" src={IMG_DISTRICT} alt="" loading="lazy" />
     <div class="media-band__scrim"></div>
     <div class="media-band__content mx-auto max-w-7xl px-6 py-32 lg:px-10 lg:py-40">
-      <p class="eyebrow text-white/50">The district</p>
+      <p class="eyebrow text-white/50">The vehicle</p>
       <p class="font-display mt-6 max-w-3xl text-2xl leading-snug sm:text-3xl">
-        A dense, mixed-use innovation district on 89 acres in Markham, built to keep Canadian
-        talent, IP, and value at home.
+        SyncI&DLabs builds innovation districts across Canada that collaborate and follow the
+        CITAble business framework, turning the opportunities we identify into land, labs, and
+        coalitions.
       </p>
       <a href="/en/district" class="mt-6 inline-block text-sm font-medium text-white/80 hover:text-white">
-        Explore the district &rarr;
+        See the innovation district design &rarr;
       </a>
     </div>
   </section>
@@ -116,24 +206,26 @@ import { HERO_VIDEO, HERO_POSTER, IMG_DISTRICT, IMG_LAND } from "../../data/medi
     <div class="mx-auto max-w-7xl px-6 py-24 lg:px-10">
       <p class="eyebrow text-graphite/60">Three doors</p>
       <div class="mt-10 grid grid-cols-1 gap-px bg-hairline md:grid-cols-3">
-        <a href="/en/partners" class="group bg-canvas p-9 transition-colors hover:bg-neutral-50">
+        <a href="/en/district" class="group bg-canvas p-9 transition-colors hover:bg-neutral-50">
           <h2 class="font-display text-2xl font-medium text-ink">Capital</h2>
           <p class="mt-4 text-base leading-relaxed text-graphite">
-            A de-risked, methodology-backed coalition play toward defined Canadian futures.
+            A methodology-backed coalition play toward defined Canadian futures, grounded in
+            ecosystem evidence.
           </p>
           <span class="accent-link mt-6 inline-block text-sm font-medium">For capital &rarr;</span>
         </a>
-        <a href="/en/partners" class="group bg-canvas p-9 transition-colors hover:bg-neutral-50">
+        <a href="/en/district" class="group bg-canvas p-9 transition-colors hover:bg-neutral-50">
           <h2 class="font-display text-2xl font-medium text-ink">Institutions</h2>
           <p class="mt-4 text-base leading-relaxed text-graphite">
-            Bring your research and your alumni to a district built for actualizing Canada's futures.
+            Bring research and alumni into a district built to keep Canadian IP and talent at home.
           </p>
           <span class="accent-link mt-6 inline-block text-sm font-medium">For institutions &rarr;</span>
         </a>
-        <a href="/en/partners" class="group bg-canvas p-9 transition-colors hover:bg-neutral-50">
+        <a href="/en/district" class="group bg-canvas p-9 transition-colors hover:bg-neutral-50">
           <h2 class="font-display text-2xl font-medium text-ink">Founders</h2>
           <p class="mt-4 text-base leading-relaxed text-graphite">
-            Place, peers, mission, and mentorship, alongside top researchers in Markham.
+            Place, peers, mission, and mentorship beside top researchers, in a coalition building a
+            sovereign Canada.
           </p>
           <span class="accent-link mt-6 inline-block text-sm font-medium">For founders &rarr;</span>
         </a>
@@ -142,12 +234,26 @@ import { HERO_VIDEO, HERO_POSTER, IMG_DISTRICT, IMG_LAND } from "../../data/medi
   </section>
 
   <!-- Credibility strip -->
-  <section>
+  <section class="border-b border-hairline">
     <div class="mx-auto max-w-7xl px-6 py-24 lg:px-10">
       <p class="max-w-4xl text-xl leading-relaxed text-graphite">
-        Venture-studio pioneer since 2013. A proven Hybrid Intelligence&trade; methodology. A
-        research-backed problem statement and a sized, multi-trillion-dollar opportunity.
+        Venture-studio pioneers since 2013. Hybrid Intelligence&trade; methodology. Advisors
+        embedded in the ecosystems we analyse. A verified problem statement, and districts that
+        actualize the opportunities they reveal.
       </p>
+    </div>
+  </section>
+
+  <!-- Network logo ticker -->
+  <section>
+    <div class="mx-auto max-w-7xl px-6 pt-12 lg:px-10">
+      <p class="eyebrow text-graphite/60">Communities we engage</p>
+    </div>
+    <div class="mt-6">
+      <LogoTicker items={communities} />
+    </div>
+    <div class="mx-auto max-w-7xl px-6 pb-12 pt-6 lg:px-10">
+      <p class="eyebrow text-right text-graphite/60" aria-hidden="true">Communities we engage</p>
     </div>
   </section>
 </Main>

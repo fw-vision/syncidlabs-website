@@ -1,0 +1,75 @@
+---
+/**
+ * Hairline grid of affiliation logos. Grayscale images; text fallback when
+ * logo is missing. Nominative association display, not endorsement.
+ *
+ * Uses per-cell borders (not gap-px + bg-hairline) so incomplete last rows
+ * never paint empty gray "ghost" tracks.
+ */
+export interface LogoItem {
+  id: string;
+  name: string;
+  logo?: string;
+  logoWide?: string;
+  reverse?: boolean;
+  href?: string;
+}
+export interface Props {
+  items: LogoItem[];
+  /** Show name caption under logo. */
+  captions?: boolean;
+}
+const { items, captions = false } = Astro.props;
+---
+
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
+  {
+    items.map((item) => {
+      const src = item.logoWide ?? item.logo;
+      const classes =
+        "flex min-h-[100px] flex-col items-center justify-center gap-3 border border-hairline bg-canvas px-6 py-8 -mt-px -ml-px transition-opacity hover:opacity-70";
+      const body = (
+        <>
+          {src ? (
+            <img
+              src={src}
+              alt={item.name}
+              class:list={["logo-mark h-8 w-auto max-w-[160px] object-contain", item.reverse && "logo-mark--reverse"]}
+              loading="lazy"
+            />
+          ) : (
+            <span class="font-display text-center text-sm font-medium leading-snug text-ink">
+              {item.name}
+            </span>
+          )}
+          {captions && src && (
+            <span class="text-center text-xs text-graphite/60">{item.name}</span>
+          )}
+        </>
+      );
+      return item.href ? (
+        <a
+          href={item.href}
+          class={classes}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={item.name}
+        >
+          {body}
+        </a>
+      ) : (
+        <div class={classes}>{body}</div>
+      );
+    })
+  }
+</div>
+
+<style>
+  .logo-mark {
+    filter: grayscale(1) contrast(1.05);
+    opacity: 0.85;
+  }
+  .logo-mark--reverse {
+    filter: invert(1) grayscale(1) contrast(1.05);
+  }
+</style>

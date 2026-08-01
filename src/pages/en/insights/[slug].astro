@@ -1,0 +1,80 @@
+---
+import { getCollection, render } from "astro:content";
+import Main from "../../../layouts/Main.astro";
+import { articleImageFor } from "../../../data/media";
+
+export async function getStaticPaths() {
+  const articles = await getCollection("insights", ({ data }) => !data.draft);
+  return articles.map((article) => ({
+    params: { slug: article.id.replace(/\.mdx?$/, "") },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+const slug = article.id.replace(/\.mdx?$/, "");
+const cover = article.data.image ?? articleImageFor(slug);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString("en-CA", { year: "numeric", month: "long", day: "numeric" });
+---
+
+<Main
+  title={`${article.data.title} - SyncI&DLabs`}
+  description={article.data.description}
+  lang="en"
+  activePath="/insights"
+>
+  <!-- Split featured hero -->
+  <section class="border-b border-hairline bg-ink text-white">
+    <div class="mx-auto grid max-w-7xl lg:grid-cols-2 lg:items-stretch">
+      <div class="flex flex-col justify-center px-6 py-16 sm:py-20 lg:px-10 lg:py-28">
+        <p class="eyebrow text-white/55">
+          {article.data.kind === "cross-post" ? "Cross-post" : "Insight"}
+        </p>
+        <h1
+          class="font-display mt-5 max-w-xl text-3xl font-normal leading-tight tracking-[-0.02em] text-white sm:text-4xl lg:text-5xl"
+        >
+          {article.data.title}
+        </h1>
+        <p class="mt-5 max-w-lg text-base leading-relaxed text-white/70 sm:text-lg">
+          {article.data.description}
+        </p>
+        <div class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-white/55">
+          <span>{fmt(article.data.publishDate)}</span>
+          {
+            article.data.canonicalUrl && (
+              <span>
+                &middot; Originally published on
+                <a href={article.data.canonicalUrl} class="text-white/80 underline-offset-2 hover:underline" rel="canonical">
+                  findcongwang.com
+                </a>
+              </span>
+            )
+          }
+        </div>
+      </div>
+      <div class="relative min-h-[240px] w-full sm:min-h-[320px] lg:min-h-[420px]">
+        <img
+          src={cover}
+          alt=""
+          class="absolute inset-0 h-full w-full object-cover"
+          loading="eager"
+        />
+      </div>
+    </div>
+  </section>
+
+  <article class="mx-auto max-w-3xl px-6 py-16 lg:px-10 lg:py-20">
+    <div
+      class="prose prose-lg max-w-none prose-headings:font-display prose-headings:font-normal prose-headings:text-ink prose-p:text-graphite prose-a:text-[color:var(--wk-accent)] prose-strong:text-ink"
+    >
+      <Content />
+    </div>
+
+    <div class="mt-16 border-t border-hairline pt-8">
+      <a href="/en/insights" class="accent-link text-sm font-medium">&larr; All insights</a>
+    </div>
+  </article>
+</Main>

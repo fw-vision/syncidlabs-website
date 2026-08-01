@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from "@astrojs/sitemap";
+import mdx from "@astrojs/mdx";
 import { fileURLToPath } from 'url';
 import { resolve } from 'path';
 
@@ -29,7 +30,17 @@ export default defineConfig({
   },
   site: 'https://syncidlabs.com',
   base: '/',
-  integrations: [sitemap()],
+  redirects: {
+    '/en/about': '/en/network',
+    '/fr/about': '/fr/network',
+    '/zh/about': '/zh/network',
+  },
+  integrations: [
+    mdx(),
+    sitemap({
+      filter: (page) => !page.includes('/fr/') && !page.includes('/zh/'),
+    }),
+  ],
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'fr', 'zh'],

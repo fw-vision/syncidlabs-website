@@ -1,0 +1,162 @@
+---
+/**
+ * Editorial business card. Squared, hairline, burgundy accent rule.
+ * US / Canadian standard: 3.5 in × 2 in (aspect-ratio 3.5 / 2).
+ * Sized wide enough that content fits inside the ratio instead of
+ * stretching the box taller (which reads as "not wide enough").
+ */
+export interface Props {
+  name: string;
+  role: string;
+  phone: string;
+  email?: string;
+  org?: string;
+  addressLines?: string[];
+  /** Optional square portrait (top-right). Omit to leave the slot blank. */
+  photoSrc?: string;
+  photoAlt?: string;
+  slogan?: string;
+  qrSrc?: string;
+  qrHref?: string;
+}
+const {
+  name,
+  role,
+  phone,
+  email,
+  org = "Synchronous I&D Labs Inc.",
+  addressLines = [
+    "280 Joseph Street",
+    "Suite 2000",
+    "Kitchener, Ontario",
+    "Canada N2G 4Z5",
+  ],
+  photoSrc,
+  photoAlt = "",
+  slogan = "Actualizing Canada's strategic futures.",
+  qrSrc = "/images/qr-syncidlabs.png",
+  qrHref = "https://syncidlabs.com",
+} = Astro.props;
+---
+
+<article class="business-card">
+  <div class="business-card__accent" style="background-color: var(--wk-accent);"></div>
+
+  <div class="business-card__top">
+    <header class="business-card__identity">
+      <p class="font-display text-[11px] font-medium tracking-tight text-graphite sm:text-xs">
+        Sync <span style="color: var(--wk-accent);">I&amp;D</span> Labs
+      </p>
+      <p class="business-card__slogan mt-1 text-[10px] leading-snug text-graphite/70 sm:text-[11px]">
+        {slogan}
+      </p>
+      <h3 class="font-display mt-3 text-base font-medium leading-tight text-ink sm:text-lg">
+        {name}
+      </h3>
+      <p class="mt-0.5 text-xs text-graphite sm:text-sm">{role}</p>
+    </header>
+
+    <div
+      class:list={["business-card__photo", photoSrc && "business-card__photo--filled"]}
+      aria-hidden={photoSrc ? undefined : "true"}
+    >
+      {
+        photoSrc ? (
+          <img
+            src={photoSrc}
+            alt={photoAlt || name}
+            width="96"
+            height="96"
+            class="h-full w-full object-cover"
+          />
+        ) : null
+      }
+    </div>
+  </div>
+
+  <div class="business-card__bottom">
+    <div class="min-w-0 text-[10px] leading-relaxed text-graphite sm:text-[11px]">
+      <p class="font-medium text-ink">{org}</p>
+      {addressLines.map((line) => <p>{line}</p>)}
+      <a
+        href={`tel:${phone.replace(/[^0-9+]/g, "")}`}
+        class="mt-1 block font-medium text-ink hover:underline"
+      >
+        {phone}
+      </a>
+      {
+        email && (
+          <a href={`mailto:${email}`} class="block font-medium text-ink hover:underline">
+            {email}
+          </a>
+        )
+      }
+    </div>
+    <a
+      href={qrHref}
+      class="business-card__qr shrink-0 border border-hairline bg-canvas p-0.5"
+      aria-label="Open syncidlabs.com"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <img src={qrSrc} alt="" width="56" height="56" class="block h-12 w-12 sm:h-14 sm:w-14" />
+    </a>
+  </div>
+</article>
+
+<style>
+  .business-card {
+    position: relative;
+    display: flex;
+    width: 100%;
+    max-width: 560px;
+    aspect-ratio: 3.5 / 2;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    border: 1px solid var(--color-hairline);
+    background: var(--color-canvas, #fff);
+    padding: 1.1rem 1.15rem 1.1rem 1.35rem;
+  }
+  .business-card__accent {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+  }
+  .business-card__top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  .business-card__identity {
+    min-width: 0;
+    flex: 1;
+  }
+  .business-card__photo {
+    width: 4.5rem;
+    height: 4.5rem;
+    flex-shrink: 0;
+    background: transparent;
+  }
+  .business-card__photo--filled {
+    border: 1px solid var(--color-hairline);
+  }
+  .business-card__bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  @media (min-width: 640px) {
+    .business-card {
+      padding: 1.25rem 1.35rem 1.25rem 1.5rem;
+    }
+    .business-card__photo {
+      width: 5.25rem;
+      height: 5.25rem;
+    }
+  }
+</style>

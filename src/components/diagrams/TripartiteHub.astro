@@ -1,0 +1,88 @@
+---
+/**
+ * DG-1: Tripartite Ecosystem Hub.
+ * Hairline burgundy SyncID ring; inner ecosystems listed large;
+ * Governance top, Education bottom-left, Industry bottom-right.
+ */
+const spheres = [
+  { label: "Governance", a: -90 },
+  { label: "Education", a: 150 },
+  { label: "Industry", a: 30 },
+];
+const innerLines = ["Non-profits", "Innovation districts", "Accelerators"];
+---
+
+<figure class="diagram-frame w-full border border-hairline bg-canvas p-6 sm:p-10">
+  <svg
+    viewBox="0 0 720 560"
+    class="mx-auto h-auto w-full max-w-4xl"
+    role="img"
+    aria-label="Tripartite Ecosystem Hub: SyncID ring holding non-profits, innovation districts, and accelerators, linked to governance, education, and industry"
+  >
+    {
+      spheres.map((s) => {
+        const rad = s.a * (Math.PI / 180);
+        const x = 360 + Math.cos(rad) * 210;
+        const y = 280 + Math.sin(rad) * 210;
+        return (
+          <g>
+            <line x1="360" y1="280" x2={x} y2={y} stroke="#e4e4e2" stroke-width="1" />
+            <circle cx={x} cy={y} r="58" fill="#fff" stroke="#e4e4e2" stroke-width="1" />
+            <text
+              x={x}
+              y={y + 6}
+              text-anchor="middle"
+              font-family="var(--font-display), sans-serif"
+              font-size="18"
+              font-weight="500"
+              fill="#0a0808"
+            >
+              {s.label}
+            </text>
+          </g>
+        );
+      })
+    }
+
+    <!-- SyncID connecting ring: hairline burgundy -->
+    <circle
+      cx="360"
+      cy="280"
+      r="128"
+      fill="#fff"
+      stroke="var(--wk-accent)"
+      stroke-width="1.5"
+    />
+
+    <text
+      x="360"
+      y="236"
+      text-anchor="middle"
+      font-family="var(--font-display), sans-serif"
+      font-size="13"
+      font-weight="500"
+      fill="var(--wk-accent)"
+    >
+      SyncI&amp;D
+    </text>
+    {
+      innerLines.map((line, i) => (
+        <text
+          x="360"
+          y={268 + i * 28}
+          text-anchor="middle"
+          font-family="var(--font-display), sans-serif"
+          font-size="18"
+          font-weight="500"
+          fill="#0a0808"
+        >
+          {line}
+        </text>
+      ))
+    }
+  </svg>
+  <figcaption class="mt-4 text-center text-xs tracking-wide text-graphite/60">
+    Tripartite Ecosystem Hub: non-profits, innovation districts, and accelerators inside the
+    SyncID ring
+  </figcaption>
+</figure>

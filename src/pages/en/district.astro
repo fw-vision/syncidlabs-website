@@ -1,105 +1,200 @@
 ---
 import Main from "../../layouts/Main.astro";
 import PageHeader from "../../components/PageHeader.astro";
-import StatCounter from "../../components/StatCounter.astro";
-import Placeholder from "../../components/Placeholder.astro";
 import MediaCTA from "../../components/MediaCTA.astro";
-import { IMG_DISTRICT } from "../../data/media";
+import TripartiteHub from "../../components/diagrams/TripartiteHub.astro";
+import { IMG_DISTRICT, BAN_DISTRICT } from "../../data/media";
 
-// The five-year proof: concrete, revenue-generating facilities.
-const facilities = [
-  {
-    name: "Innovator residency",
-    body: "On-site lodging so founders and researchers live where they build.",
-    img: "aerial or interior of mixed-use residential-lab block",
-  },
-  {
-    name: "Labs",
-    body: "Shared wet and dry labs for venture and university research.",
-    img: "modern research lab interior",
-  },
-  {
-    name: "Greenhouses",
-    body: "Controlled-environment agriculture proving food sovereignty at scale.",
-    img: "vertical farm / greenhouse interior",
-  },
-  {
-    name: "Sovereign-compute test-bed",
-    body: "Distributed, dual-use compute Canada owns and controls.",
-    img: "small-scale modular data hall / compute pods",
-  },
-  {
-    name: "Battery recycling",
-    body: "Retired EV battery remanufacturing extending life 5 to 10 years.",
-    img: "battery remanufacturing / cleantech facility",
-  },
+// Template 1 (featured): the high-tech innovation district, end to end.
+const districtProperties = [
+  { name: "Energy and compute substrate", body: "Generation, storage, and distributed compute as the foundation every venture builds on." },
+  { name: "Research and labs", body: "Shared wet and dry labs where discovery happens and university partners convene." },
+  { name: "Pre-commercialization floor", body: "The missing layer between lab and market: space to prototype, test, and de-risk at real scale." },
+  { name: "Production and industry", body: "Advanced manufacturing and Industry 4.0 lines that turn proven work into Canadian-owned output." },
+  { name: "Residency and community", body: "On-site living so founders and researchers stay, and the district earns its density from people." },
+  { name: "Self-evaluation", body: "The CITAble Business Index selects and steers what enters, so the district proves itself as it grows." },
 ];
 
-// The 50-year phased horizon.
-const horizons = [
-  { phase: "H1", span: "5 to 10 years", body: "The five-year proof: residency, labs, greenhouses, compute test-bed, battery recycling." },
-  { phase: "H2", span: "10 to 20 years", body: "Coalitions scale; blended funds per future; the district reaches critical density." },
-  { phase: "H3", span: "30 years and beyond", body: "A self-sustaining innovation district anchoring Canadian sovereignty." },
+// Template 2: the resilient mixed-use neighbourhood.
+const neighbourhoodConditions = [
+  { name: "Islandable microgrid", body: "Solar on every roof, storage at the commercial core, a grid that can disconnect and keep the neighbourhood running." },
+  { name: "On-site food", body: "Greenhouses and community gardens that produce locally, coupled to clean power and waste heat." },
+  { name: "Local compute", body: "Small, distributed compute sited within the community, so data and capability stay close to the people who bear its costs." },
+  { name: "Mixed use by design", body: "Homes, work, research, and production woven together, not zoned apart, so the neighbourhood is lived in, not commuted to." },
+  { name: "Designed in, not retrofitted", body: "Resilience is built from the first plan. Retrofitting existing suburbs is impractical; new developments carry it from the outset." },
+  { name: "Public good by design", body: "The host community gets priority access to what the district produces, fresh food, clean power, and local compute, so the neighbourhood is repaid for what it hosts." },
+];
+
+// Folded-in partner tracks.
+const partnerTracks = [
+  { audience: "Capital", body: "A de-risked, methodology-backed coalition play toward defined Canadian futures. Returns without venture-studio dilution or origination risk, in the durable market of crossing firms back over the chasm." },
+  { audience: "Institutions", body: "Bring your research and your alumni to a district built for actualizing Canada's futures. We offer space, access, and mission alignment." },
+  { audience: "Founders", body: "Place, peers, mission, and mentorship, alongside top researchers, in a coalition building a sovereign Canada. The alternative to the accelerator model." },
 ];
 ---
 
 <Main
-  title="The District - SyncID Labs"
-  description="The HI-Tech Innovation District: a dense, mixed-use district on 89 acres in Markham, with labs, greenhouses, a sovereign-compute test-bed, and a battery-recycling facility."
+  title="District Design - SyncI&DLabs"
+  description="A resilient blueprint toward a sovereign future: a repeatable design for high-tech innovation districts and resilient mixed-use neighbourhoods that generate their own energy, food, and compute. Applications at the Waterloo Research and Technology Park and at strategically located greenfield lands."
   lang="en"
   activePath="/district"
 >
   <PageHeader
-    eyebrow="The district"
-    title="The HI-Tech Innovation District."
-    lead="A dense, mixed-use, arcology-like district on 89 acres in Markham. On-site innovator residency, labs, greenhouses, a sovereign-compute test-bed, and a battery-recycling facility."
+    eyebrow="District design"
+    title="A resilient blueprint toward a sovereign future."
+    lead="Two repeatable designs: a high-tech innovation district that runs the full range end to end, and the resilient mixed-use neighbourhood beneath it. Each generates its own energy, food, and compute. Each is an application waiting for the right ground."
+    image={BAN_DISTRICT}
+    imageAlt="Greenhouse and solar installation at dawn"
+    variant="dark"
   />
 
-  <!-- Hero visual: the site itself -->
+  <!-- Tripartite ecosystem hub diagram slot -->
   <section class="border-b border-hairline">
-    <div class="mx-auto max-w-7xl px-6 py-12 lg:px-10">
-      <Placeholder
-        kind="image"
-        ratio="21/9"
-        label="Aerial view of the 89-acre Markham site (or a massing render of the district vision)"
-        note="The single most important image on the site for civic credibility. Prefer a real aerial of the land or a commissioned massing/arcology render."
-      />
-    </div>
-  </section>
-
-  <!-- Key stats -->
-  <section class="border-b border-hairline">
-    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
-      <StatCounter
-        stats={[
-          { value: "89", label: "Acres in Markham" },
-          { value: "5", label: "Anchor facilities" },
-          { value: "50yr", label: "Phased horizon" },
-          { value: "H1", label: "Building now" },
-        ]}
-      />
-    </div>
-  </section>
-
-  <!-- The five-year proof: facilities grid -->
-  <section class="border-b border-hairline">
-    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
-      <p class="eyebrow text-graphite/60">The five-year proof</p>
-      <h2 class="font-display mt-6 max-w-3xl text-3xl font-medium leading-tight text-ink sm:text-4xl">
-        Concrete, revenue-generating, and visible in five years.
+    <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+      <p class="eyebrow text-graphite/60">How it connects</p>
+      <h2 class="font-display mt-6 max-w-4xl text-3xl font-medium leading-tight text-ink sm:text-4xl">
+        Hubs that trade resources, across three spheres.
       </h2>
-      <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-graphite">
+        At the centre sit interrelated community ecosystems that share and trade resources:
+        non-profits, innovation districts, and accelerators. They interface with the three spheres
+        of the innovation economy, governance, education, and industry, binding them into a working
+        whole. This is the Tripartite Ecosystem model in built form.
+      </p>
+      <div class="mt-10">
+        <TripartiteHub />
+      </div>
+    </div>
+  </section>
+
+  <!-- Template 1 (featured): high-tech innovation district -->
+  <section class="border-b border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <p class="eyebrow" style="color: var(--wk-accent);">Template one, featured</p>
+      <h2 class="font-display mt-6 max-w-3xl text-3xl font-medium leading-tight text-ink sm:text-4xl">
+        The high-tech innovation district, end to end.
+      </h2>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-graphite">
+        The flagship design: a district that carries the full range from research through
+        pre-commercialization to production, with an emphasis chosen for its ground. A
+        research-oriented site leans toward discovery and labs. A pre-commercialization site leans
+        toward the bridge from proven work to market. Both run the whole chain.
+      </p>
+      <div class="mt-12 grid grid-cols-1 gap-px bg-hairline md:grid-cols-2 lg:grid-cols-3">
         {
-          facilities.map((f) => (
-            <div class="border border-hairline bg-canvas">
-              <Placeholder kind="image" ratio="4/3" label={f.img} />
-              <div class="p-6">
-                <h3 class="font-display text-xl font-medium text-ink">{f.name}</h3>
-                <p class="mt-3 text-base leading-relaxed text-graphite">{f.body}</p>
-              </div>
+          districtProperties.map((p) => (
+            <div class="bg-canvas p-8">
+              <h3 class="font-display text-xl font-medium text-ink">{p.name}</h3>
+              <p class="mt-3 text-base leading-relaxed text-graphite">{p.body}</p>
             </div>
           ))
         }
+      </div>
+    </div>
+  </section>
+
+  <!-- Mid-page visual break -->
+  <section class="bg-ink text-white">
+    <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-20">
+      <p class="eyebrow text-white/50">Two templates, one method</p>
+      <p class="font-display mt-5 max-w-3xl text-2xl font-normal leading-snug tracking-tight sm:text-3xl">
+        A high-tech district that runs the full range end to end, and the resilient neighbourhood
+        beneath it. Each generates its own energy, food, and compute.
+      </p>
+    </div>
+  </section>
+
+  <!-- Template 2: resilient mixed-use neighbourhood -->
+  <section class="border-b border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <p class="eyebrow text-graphite/60">Template two</p>
+      <h2 class="font-display mt-6 max-w-3xl text-3xl font-medium leading-tight text-ink sm:text-4xl">
+        The resilient mixed-use neighbourhood.
+      </h2>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-graphite">
+        The foundation the district sits on: the minimum conditions for a neighbourhood that makes
+        its own energy, food, and compute, and keeps running when the wider grid does not. The
+        future of living.
+      </p>
+      <div class="mt-12 grid grid-cols-1 gap-px bg-hairline md:grid-cols-2 lg:grid-cols-3">
+        {
+          neighbourhoodConditions.map((c) => (
+            <div class="bg-canvas p-8">
+              <h3 class="font-display text-xl font-medium text-ink">{c.name}</h3>
+              <p class="mt-3 text-base leading-relaxed text-graphite">{c.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Applications: Waterloo RT Park + strategic greenfield -->
+  <section class="border-b border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <p class="eyebrow text-graphite/60">Applications</p>
+      <h2 class="font-display mt-6 max-w-3xl text-3xl font-medium leading-tight text-ink sm:text-4xl">
+        Two grounds, one framework.
+      </h2>
+      <div class="mt-12 grid grid-cols-1 gap-10 lg:grid-cols-2">
+        <div class="border border-hairline bg-canvas p-9">
+          <h3 class="font-display text-2xl font-medium text-ink">
+            Revitalising a research park
+          </h3>
+          <p class="mt-4 text-base leading-relaxed text-graphite">
+            The Waterloo Research and Technology Park is a research-oriented application: a mature
+            research setting whose commercialization pathways can be revived using this framework.
+            Waterloo leans toward discovery and deep-tech research; the framework binds that
+            research to a bridge that keeps more of its value in Canada.
+          </p>
+        </div>
+        <div class="border border-hairline bg-canvas p-9">
+          <h3 class="font-display text-2xl font-medium text-ink">
+            A strategically located greenfield district
+          </h3>
+          <p class="mt-4 text-base leading-relaxed text-graphite">
+            Markham is a strong candidate for a pre-commercialization and commercialization
+            district. It holds Canada's highest concentration of information and communications
+            technology workers, more than 1,500 technology companies, corporate anchors, and the
+            largest tract of undeveloped employment greenfield lands in the Toronto region,
+            directly adjacent to Highway 404. Its access to both reclaimable agricultural land and
+            major highway infrastructure makes it excellent ground for a new kind of development.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The regenerative farmland opportunity -->
+  <section class="border-b border-hairline">
+    <div class="mx-auto grid max-w-7xl gap-10 px-6 py-20 lg:grid-cols-12 lg:px-10">
+      <div class="lg:col-span-4">
+        <p class="eyebrow text-graphite/60">The regenerative pattern</p>
+        <h2 class="font-display mt-6 text-3xl font-medium leading-tight text-ink sm:text-4xl">
+          Reclaiming spent farmland.
+        </h2>
+      </div>
+      <div class="lg:col-span-8">
+        <p class="text-lg leading-relaxed text-graphite">
+          Our ground-level data-centre pattern turns a liability into a foundation. A compute
+          facility sited into the land runs cool through ground contact; its waste heat warms
+          greenhouses above; its cooling water irrigates the crops. Placed on spent monoculture
+          farmland, the pattern reclaims depleted soil and builds a regenerative community around
+          it: energy, food, and compute reinforcing one another, with the host community given
+          priority access to what the facility produces.
+        </p>
+        <div class="mt-10 overflow-hidden border border-hairline">
+          <img
+            src="/images/articles/food.jpg"
+            alt="Greenhouse interior with growing beds under warm daylight"
+            class="aspect-[21/9] w-full object-cover"
+            loading="lazy"
+          />
+          <p class="border-t border-hairline bg-canvas px-5 py-3 text-xs tracking-wide text-graphite/70">
+            Regenerative pattern: waste heat and water from ground-level compute feed greenhouses
+            and crops on reclaimed farmland.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -119,40 +214,43 @@ const horizons = [
     </div>
   </section>
 
-  <!-- Phased horizon timeline -->
+  <!-- Build with us (folded-in Partners) -->
   <section class="border-b border-hairline">
     <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
-      <p class="eyebrow text-graphite/60">The 50-year phased horizon</p>
-      <div class="mt-10 grid grid-cols-1 gap-px bg-hairline md:grid-cols-3">
+      <p class="eyebrow text-graphite/60">Build with us</p>
+      <h2 class="font-display mt-6 max-w-3xl text-3xl font-medium leading-tight text-ink sm:text-4xl">
+        Endorse it, invest in it, or join it.
+      </h2>
+      <div class="mt-10 divide-y divide-hairline border-y border-hairline">
         {
-          horizons.map((h) => (
-            <div class="bg-canvas p-8">
-              <div class="flex items-baseline gap-3">
-                <span class="font-display text-3xl font-semibold" style="color: var(--wk-accent);">
-                  {h.phase}
-                </span>
-                <span class="text-sm text-graphite">{h.span}</span>
+          partnerTracks.map((s) => (
+            <div class="grid gap-6 py-12 lg:grid-cols-12">
+              <div class="lg:col-span-3">
+                <h3 class="font-display text-2xl font-medium text-ink">{s.audience}</h3>
               </div>
-              <p class="mt-4 text-base leading-relaxed text-graphite">{h.body}</p>
+              <div class="lg:col-span-9">
+                <p class="max-w-2xl text-lg leading-relaxed text-graphite">{s.body}</p>
+              </div>
             </div>
           ))
         }
       </div>
       <div class="mt-10">
-        <Placeholder
-          kind="data"
-          ratio="21/9"
-          label="Phased master-plan diagram or site map (H1 / H2 / H3 build-out)"
-          note="A simple annotated site plan or timeline graphic. Could be produced with the fw-vision dataviz widgets."
-        />
+        <a
+          href="/en/contact"
+          class="inline-flex items-center px-7 py-3.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
+          style="background-color: var(--wk-accent);"
+        >
+          Start a conversation
+        </a>
       </div>
     </div>
   </section>
 
   <MediaCTA
     image={IMG_DISTRICT}
-    eyebrow="A legacy for the city"
-    headline="The district a civic leader is remembered for bringing to Markham."
+    eyebrow="A legacy worth building"
+    headline="The district design a civic leader is remembered for bringing to their city."
     ctaLabel="Start a conversation"
     ctaHref="/en/contact"
   />

@@ -1,0 +1,65 @@
+---
+/**
+ * DG-2 lite: CBI structure — 8 dimensions in 4 category groups on a radar ring.
+ */
+const categories = [
+  { name: "Grounding", angle: -90 },
+  { name: "Buildability", angle: 0 },
+  { name: "Directional Fit", angle: 90 },
+  { name: "Societal", angle: 180 },
+];
+const dims = 8;
+---
+
+<figure class="diagram-frame w-full border border-hairline bg-canvas p-6 sm:p-8">
+  <svg viewBox="0 0 560 360" class="mx-auto h-auto w-full max-w-2xl" role="img" aria-label="CITAble Business Index: four categories, eight dimensions">
+    <!-- Concentric rings -->
+    {[40, 70, 100, 130].map((r) => (
+      <circle cx="280" cy="180" r={r} fill="none" stroke="#e4e4e2" stroke-width="1" />
+    ))}
+    <!-- Spokes -->
+    {Array.from({ length: dims }).map((_, i) => {
+      const a = ((i / dims) * 360 - 90) * (Math.PI / 180);
+      const x2 = 280 + Math.cos(a) * 130;
+      const y2 = 180 + Math.sin(a) * 130;
+      return <line x1="280" y1="180" x2={x2} y2={y2} stroke="#e4e4e2" stroke-width="1" />;
+    })}
+    <!-- Sample polygon (illustrative, not live scores) -->
+    <polygon
+      points={Array.from({ length: dims })
+        .map((_, i) => {
+          const a = ((i / dims) * 360 - 90) * (Math.PI / 180);
+          const r = [95, 110, 85, 100, 90, 105, 80, 115][i];
+          return `${280 + Math.cos(a) * r},${180 + Math.sin(a) * r}`;
+        })
+        .join(" ")}
+      fill="var(--wk-accent)"
+      fill-opacity="0.12"
+      stroke="var(--wk-accent)"
+      stroke-width="1.5"
+    />
+    <!-- Category labels -->
+    {categories.map((c) => {
+      const a = c.angle * (Math.PI / 180);
+      const x = 280 + Math.cos(a) * 155;
+      const y = 180 + Math.sin(a) * 155;
+      return (
+        <text
+          x={x}
+          y={y}
+          text-anchor="middle"
+          dominant-baseline="middle"
+          font-family="var(--font-display), sans-serif"
+          font-size="11"
+          fill="#0a0808"
+        >
+          {c.name}
+        </text>
+      );
+    })}
+    <text x="280" y="184" text-anchor="middle" font-family="var(--font-display), sans-serif" font-size="12" fill="var(--wk-accent)">CBI</text>
+  </svg>
+  <figcaption class="mt-4 text-center text-xs tracking-wide text-graphite/60">
+    Eight dimensions · four categories · companion indices CVI, Agentic Gradient, SRI
+  </figcaption>
+</figure>

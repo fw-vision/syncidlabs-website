@@ -1,7 +1,8 @@
 ---
 import Main from "../../layouts/Main.astro";
 import PageHeader from "../../components/PageHeader.astro";
-import Placeholder from "../../components/Placeholder.astro";
+import BusinessCard from "../../components/BusinessCard.astro";
+import { BAN_CONTACT } from "../../data/media";
 
 const paths = [
   {
@@ -20,8 +21,8 @@ const paths = [
 ---
 
 <Main
-  title="Contact - SyncID Labs"
-  description="Start a conversation with SyncID Labs about the innovation district, partnership, or capital."
+  title="Contact - SyncI&DLabs"
+  description="Start a conversation with SyncI&DLabs about the innovation district, partnership, or capital."
   lang="en"
   activePath="/contact"
 >
@@ -29,6 +30,8 @@ const paths = [
     eyebrow="Contact"
     title="Start a conversation."
     lead="We welcome civic, institutional, capital, and founder enquiries. The clearest first step is a direct conversation."
+    image={BAN_CONTACT}
+    imageAlt="Purposeful workspace collaboration"
   />
 
   <!-- Engagement paths per audience -->
@@ -48,28 +51,36 @@ const paths = [
     </div>
   </section>
 
-  <!-- Direct contact + form frame -->
+  <!-- Direct enquiry + business cards -->
   <section>
-    <div class="mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-2 lg:px-10">
-      <div>
-        <p class="eyebrow text-graphite/60">Direct</p>
-        <a
-          href="mailto:hello@syncidlabs.com"
-          class="accent-link font-display mt-6 inline-block text-2xl font-medium sm:text-3xl"
-        >
-          hello@syncidlabs.com
-        </a>
-        <p class="mt-6 max-w-sm text-base leading-relaxed text-graphite">
-          For civic and partnership enquiries, a direct note is the fastest path. We reply
-          personally.
-        </p>
+    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <p class="eyebrow text-graphite/60">Direct</p>
+      <a
+        href="mailto:hello@syncidlabs.com"
+        class="accent-link font-display mt-6 inline-block text-2xl font-medium sm:text-3xl"
+      >
+        hello@syncidlabs.com
+      </a>
+      <p class="mt-6 max-w-xl text-base leading-relaxed text-graphite">
+        For civic and partnership enquiries, a direct note is the fastest path. We reply
+        personally. Cards for the founder and head of strategic growth:
+      </p>
+
+      <div class="mt-12 grid grid-cols-1 justify-items-center gap-8 lg:grid-cols-2 lg:justify-items-stretch">
+        <BusinessCard
+          name="Francis Wang"
+          role="Founder, President"
+          phone="226-808-0775"
+          email="francis.wang@syncidlabs.com"
+          photoSrc="/images/francis_squared.jpg"
+        />
+        <BusinessCard
+          name="William Yao"
+          role="Head of Strategic Growth"
+          phone="289-637-7786"
+          email="william.yao@syncidlabs.com"
+        />
       </div>
-      <Placeholder
-        kind="copy"
-        ratio="4/3"
-        label="Contact form (name, organisation, audience type, message)"
-        note="Static hosting has no backend; decide between a mailto form, a Formspree/Basin endpoint, or a booking link before launch."
-      />
     </div>
   </section>
 </Main>

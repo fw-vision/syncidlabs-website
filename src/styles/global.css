@@ -5,8 +5,9 @@
 
 /* ---- Design tokens: SyncID editorial system ---- */
 @theme {
+  /* Hybrid: Space Grotesk for wordmark/titles; Satoshi for body (Favorit-like). */
   --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Satoshi", ui-sans-serif, system-ui, sans-serif;
 
   /* Oversized editorial display scale */
   --text-display: 5rem; /* ~80px */
@@ -24,13 +25,34 @@
   --color-canvas: #ffffff;
 }
 
-/* SyncID accent: burgundy. Consumed by web-kit components via --wk-accent. */
+/* SyncID accent: burgundy. Consumed by web-kit components via --wk-accent.
+ * Light canvas uses the deep accent; dark heroes/ink bands use the on-dark token
+ * so burgundy remains visible over photography. */
 :root {
   --wk-accent: oklch(32.09% 0.131 27.2);
+  --wk-accent-on-dark: oklch(66.09% 0.195 37.35);
   --wk-ink: #0a0808;
   --wk-graphite: #33383d;
   --wk-hairline: #e4e4e2;
   --wk-canvas: #ffffff;
+}
+
+/* ---- Annotation brand alignment ----
+ * The web-kit annotation components (MarginNote/FootNote) default to a
+ * multi-colour positional palette (blue/green/teal/amber/...) keyed by note
+ * number, or to "green" for semantic use. That multi-colour default is the
+ * source of stray teal/green underlines and is OFF-BRAND for SyncID.
+ *
+ * SyncID convention: annotations use the single burgundy accent. In .mdx
+ * articles, pass color="burgundy" on every MarginNote/FootNote/InlineNote so
+ * the author palette resolves to burgundy. As a defensive fallback, bind the
+ * web-kit author-burgundy token to the accent and steer the semantic default. */
+:root {
+  --annotation-author-burgundy: var(--wk-accent);
+  --annotation-author-burgundy-highlight: color-mix(in oklch, var(--wk-accent) 18%, transparent);
+  /* Bias any positional/semantic fallbacks toward the accent rather than teal/green. */
+  --annotation-author: var(--wk-accent);
+  --accent: var(--wk-accent);
 }
 
 /* ---- Base typography ---- */
@@ -41,7 +63,7 @@ html {
 
 body {
   font-family: var(--font-sans);
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  font-weight: 400;
   color: var(--color-ink);
 }
 
@@ -50,6 +72,7 @@ h2,
 h3,
 .font-display {
   font-family: var(--font-display);
+  font-weight: 400;
   letter-spacing: -0.02em;
 }
 
@@ -117,9 +140,8 @@ a {
 #site-header.is-hero .nav-link {
   color: rgba(255, 255, 255, 0.85);
 }
-#site-header.is-hero .brand-text span[style] {
-  /* keep the I&D accent visible on dark */
-  filter: brightness(1.6);
+#site-header.is-hero .brand-text .accent-mark {
+  color: var(--wk-accent-on-dark) !important;
 }
 #site-header.is-hero .nav-link:hover {
   color: #fff;
@@ -145,8 +167,8 @@ a {
 #site-header.is-hero.scrolled .brand-text {
   color: var(--color-ink);
 }
-#site-header.is-hero.scrolled .brand-text span[style] {
-  filter: none;
+#site-header.is-hero.scrolled .brand-text .accent-mark {
+  color: var(--wk-accent) !important;
 }
 #site-header.is-hero.scrolled .nav-link:hover {
   color: var(--color-ink);
@@ -179,12 +201,14 @@ body:not(.has-hero) main {
 .media-band__scrim {
   position: absolute;
   inset: 0;
+  /* Near-black with burgundy undertone so the hero reads SyncID, not generic dark stock. */
   background: linear-gradient(
     180deg,
-    rgba(10, 8, 8, 0.55) 0%,
-    rgba(10, 8, 8, 0.35) 50%,
-    rgba(10, 8, 8, 0.7) 100%
+    color-mix(in oklch, var(--wk-accent) 28%, #0a0808) 0%,
+    color-mix(in oklch, var(--wk-accent) 12%, transparent) 42%,
+    color-mix(in oklch, var(--wk-accent) 35%, #0a0808) 100%
   );
+  opacity: 0.88;
 }
 .media-band__content {
   position: relative;

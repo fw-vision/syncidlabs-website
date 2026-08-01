@@ -1,23 +1,92 @@
 ---
+/**
+ * Interior page opener. Tech Barcelona-style split block when `image` is set:
+ * copy left / full-bleed squared image right. Text-only when no image.
+ */
 export interface Props {
   eyebrow?: string;
   title: string;
   lead?: string;
+  /** Optional full-bleed right-column image (split layout). */
+  image?: string;
+  imageAlt?: string;
+  /** light = canvas; dark = ink band (featured posts / district). */
+  variant?: "light" | "dark";
+  /** Optional CTA slot content via default slot under lead. */
 }
-const { eyebrow, title, lead } = Astro.props;
+const {
+  eyebrow,
+  title,
+  lead,
+  image,
+  imageAlt = "",
+  variant = "light",
+} = Astro.props;
+const dark = variant === "dark";
+const split = Boolean(image);
 ---
 
-<section class="border-b border-hairline">
-  <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28">
-    {eyebrow && <p class="eyebrow text-graphite/60">{eyebrow}</p>}
-    <h1
-      class="font-display mt-6 max-w-4xl text-4xl font-medium leading-[1.05] tracking-[-0.03em] text-ink sm:text-5xl lg:text-6xl"
+<section
+  class:list={[
+    "border-b border-hairline",
+    dark ? "bg-ink text-white" : "bg-canvas",
+    split && "overflow-hidden",
+  ]}
+>
+  <div
+    class:list={[
+      split
+        ? "mx-auto grid max-w-7xl lg:grid-cols-2 lg:items-stretch"
+        : "mx-auto max-w-7xl px-6 py-20 lg:px-10 lg:py-28",
+    ]}
+  >
+    <div
+      class:list={[
+        split && "flex flex-col justify-center px-6 py-16 sm:py-20 lg:px-10 lg:py-28",
+      ]}
     >
-      {title}
-    </h1>
+      {
+        eyebrow && (
+          <p class:list={["eyebrow", dark ? "text-white/55" : "text-graphite/60"]}>
+            {eyebrow}
+          </p>
+        )
+      }
+      <h1
+        class:list={[
+          "font-display mt-6 max-w-4xl text-4xl font-normal leading-[1.05] tracking-[-0.03em] sm:text-5xl lg:text-6xl",
+          dark ? "text-white" : "text-ink",
+        ]}
+      >
+        {title}
+      </h1>
+      {
+        lead && (
+          <p
+            class:list={[
+              "mt-7 max-w-2xl text-lg leading-relaxed sm:text-xl",
+              dark ? "text-white/70" : "text-graphite",
+            ]}
+          >
+            {lead}
+          </p>
+        )
+      }
+      <div class="mt-8 empty:hidden">
+        <slot />
+      </div>
+    </div>
+
     {
-      lead && (
-        <p class="mt-7 max-w-2xl text-lg leading-relaxed text-graphite sm:text-xl">{lead}</p>
+      split && (
+        <div class="relative min-h-[240px] w-full sm:min-h-[320px] lg:min-h-full">
+          <img
+            src={image}
+            alt={imageAlt}
+            class="absolute inset-0 h-full w-full object-cover"
+            loading="eager"
+          />
+        </div>
       )
     }
   </div>

@@ -1,40 +1,51 @@
 /**
- * Placeholder imagery for SyncID Labs.
+ * Site imagery for SyncI&DLabs.
  *
- * TODO (Principal): replace these with owned/licensed assets before launch.
- * Current values are stable Unsplash CDN URLs chosen for an architectural,
- * forward-looking, Canadian-land sensibility (no lifestyle-stock people).
- * Query them at build/runtime via the direct images.unsplash.com CDN.
- *
- * A hero video placeholder can be dropped at /public/media/hero.mp4 and
- * referenced via HERO_VIDEO; until then the hero falls back to HERO_POSTER.
+ * Local assets under /public/images/ follow Style A (Canadian land &
+ * infrastructure) and Style B (editorial abstraction) from
+ * docs/plans/visual-system.md. Burgundy is never baked into photos.
  */
 
-export const HERO_VIDEO = "/media/hero.mp4"; // optional; falls back to poster if absent
-export const HERO_POSTER =
-  "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=2400&q=70"; // misty forested land / horizon
+export const HERO_VIDEO = "/media/hero.mp4";
+export const HERO_POSTER = "/images/hero-poster.jpg";
 
-export const IMG_DISTRICT =
-  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2400&q=70"; // modern architecture / built form
+export const IMG_DISTRICT = "/images/district.jpg";
+export const IMG_LAND = "/images/land.jpg";
+export const IMG_COMPUTE = "/images/compute.jpg";
+export const IMG_RESEARCH = "/images/research.jpg";
+export const IMG_CTA = "/images/cta.jpg";
 
-export const IMG_LAND =
-  "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=2400&q=70"; // aerial land / green expanse
+/** Interior split-header banners. */
+export const BAN_ABOUT = "/images/banners/about.jpg";
+export const BAN_RESEARCH = "/images/banners/research.jpg";
+export const BAN_APPROACH = "/images/banners/approach.jpg";
+export const BAN_FUTURES = "/images/banners/futures.jpg";
+export const BAN_DISTRICT = "/images/banners/district.jpg";
+export const BAN_INSIGHTS = "/images/banners/insights.jpg";
+export const BAN_CONTACT = "/images/banners/contact.jpg";
 
-export const IMG_COMPUTE =
-  "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2400&q=70"; // infrastructure / server-hall abstraction
-
-export const IMG_RESEARCH =
-  "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2400&q=70"; // data / network / earth-at-night
-
-export const IMG_CTA =
-  "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=2400&q=70"; // collaboration / workspace
-
-/** Insights / featured-article card placeholders. */
+/** Insights / featured-article card images (Style B primary). */
 export const ARTICLE_IMAGES = [
-  "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=70", // meeting / build
-  "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=70", // office / workspace
-  "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=70", // interior / district
-  "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?auto=format&fit=crop&w=1200&q=70", // lab / greenhouse
-  "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=70", // compute / circuit
-  "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1200&q=70", // energy / infrastructure
+  "/images/articles/gap.jpg",
+  "/images/articles/talent.jpg",
+  "/images/articles/district.jpg",
+  "/images/articles/food.jpg",
+  "/images/articles/compute.jpg",
+  "/images/articles/manufacturing.jpg",
 ];
+
+/** Map an insights slug (or index) to a card/cover image. */
+export function articleImageFor(slug: string, index = 0): string {
+  const bySlug: Record<string, string> = {
+    "canadas-innovation-paradox": ARTICLE_IMAGES[0],
+    "the-missing-layer-pre-commercialization": ARTICLE_IMAGES[1],
+    "designing-resilient-neighbourhoods": ARTICLE_IMAGES[2],
+    "data-centre-good-neighbour": ARTICLE_IMAGES[3],
+    "innovation-sanctuary": ARTICLE_IMAGES[2],
+    "innovation-sovereignty": ARTICLE_IMAGES[0],
+    "build-to-manage": ARTICLE_IMAGES[5],
+    "long-term-strategic-venture-capital": ARTICLE_IMAGES[1],
+    "tripartite-ecosystem-model": ARTICLE_IMAGES[4],
+  };
+  return bySlug[slug] ?? ARTICLE_IMAGES[index % ARTICLE_IMAGES.length];
+}

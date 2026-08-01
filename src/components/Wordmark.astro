@@ -6,7 +6,7 @@
  * The "I&D" is emphasised in the accent colour (the brand's read of "SyncID").
  *
  * Variants:
- *  - "hero": large, used inside the dark hero; participates in scroll-shrink.
+ *  - "hero": large, used inside the dark hero; uses --wk-accent-on-dark.
  *  - "nav": compact, single-line, used in the sticky navbar.
  */
 export interface Props {
@@ -21,12 +21,12 @@ const { variant = "nav", class: className = "" } = Astro.props;
     <span class:list={["block font-display leading-[0.95] tracking-[-0.03em]", className]}>
       <span class="block text-2xl font-medium text-white/70 sm:text-3xl">Synchronous</span>
       <span class="block text-4xl font-semibold text-white sm:text-5xl">
-        <span style="color: var(--wk-accent);">I&amp;D</span> Labs Inc.
+        <span class="accent-mark" style="color: var(--wk-accent-on-dark);">I&amp;D</span> Labs Inc.
       </span>
     </span>
   ) : (
     <span class:list={["font-display font-semibold tracking-tight text-ink", className]}>
-      Sync<span style="color: var(--wk-accent);">I&amp;D</span> Labs
+      Sync <span class="accent-mark" style="color: var(--wk-accent);">I&amp;D</span> Labs
     </span>
   )
 }

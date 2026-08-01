@@ -1,0 +1,31 @@
+Project: SyncID Labs website (syncidlabs.com) - the public credibility site for the operational incubator carrying the Markham HI-Tech Innovation District. Part of the FW.VISION constellation. SyncID positions as an ecosystem EXPERT (not a developer).
+
+READ FIRST, EVERY SESSION:
+- AGENTS.md (project map, stack, conventions, the storyline) - this is the primary context.
+- docs/brand/DESIGN.md (editorial burgundy system: palette, type, colour language, components).
+- docs/plans/ (the active content/build handoffs for the task you were given: website-content-strategy.md, energy-compute-innovation-arc.md).
+Do not act on UI or copy until you have read these.
+
+BUILD / VERIFY (non-negotiable):
+- Build with `bunx astro build` (exit 0 = compiles). Do NOT use `npm run build` if the bun install layout breaks the npm shim.
+- Install with `bun install` (needs the token env var for private @fw-vision/* packages, read by .npmrc).
+- For a smoke test, run `bunx astro dev` in a BACKGROUND job, wait ~9s, capture output, then KILL it. NEVER leave a dev server running - it blocks the session.
+- A clean build is sufficient proof of compilation; the human does visual verification.
+
+HARD RULES:
+- Domain is syncidlabs.com.
+- SyncID is an ECOSYSTEM EXPERT, not a real-estate developer. Lead with ecosystem understanding, unique opportunities (Waterloo emphasis), and advisors embedded in ecosystems centred on founder Francis Wang.
+- Actualizer voice: "we build / we actualize", present tense, active. NEVER speculative onlooker language ("imagine", "someday", "could"). NEVER startup-hype or superlatives.
+- Verified data only; every proof point cites its source. State the 1.2M TN caveat (admissions, not unique individuals) when used.
+- Sovereignty-first. China dual-campus, Panda Bond, digital-RMB stay OUT of all public copy (internal financing, vault-private).
+- Editorial discipline: flat surfaces, hairline 1px borders, squared corners (0px radius), generous whitespace, oversized display type. No shadows/gradients/patterns. Do not look like a SaaS landing page.
+- Burgundy is the single chromatic accent (oklch(32.09% 0.131 27.20) light / oklch(66.09% 0.195 37.35) dark), used sparingly via --wk-accent. Ink #0a0808, graphite #33383d, hairline #e4e4e2, canvas #ffffff.
+- Type: Space Grotesk (display/wordmark) + Satoshi (body). Hierarchy from size + whitespace, not heavy weights. Dark heroes use `--wk-accent-on-dark`.
+- Canadian spelling. No em-dashes (restructure the sentence).
+
+STYLE:
+- Clean, idiomatic TypeScript / Astro. Astro islands pattern (JS only where needed).
+- Honour prefers-reduced-motion in any animation.
+- Prefer editing existing components over adding new ones; match the existing editorial visual language.
+
+Brand and content direction are maintained separately (Perceptiosphere vault); this repo is the website implementation. Work from docs/brand/DESIGN.md and the existing pages. Local content/build plans live in docs/plans/ (gitignored). If something about brand or content is unclear, flag it rather than inventing it.

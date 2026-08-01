@@ -1,7 +1,10 @@
 ---
 import Main from "../../layouts/Main.astro";
 import PageHeader from "../../components/PageHeader.astro";
-import Placeholder from "../../components/Placeholder.astro";
+import HybridIntelligence from "../../components/diagrams/HybridIntelligence.astro";
+import CitAbleLoop from "../../components/diagrams/CitAbleLoop.astro";
+import CbiStructure from "../../components/diagrams/CbiStructure.astro";
+import { BAN_APPROACH, IMG_COMPUTE } from "../../data/media";
 
 const steps = [
   {
@@ -21,6 +24,40 @@ const steps = [
   },
 ];
 
+const cbiCategories = [
+  {
+    name: "Grounding",
+    body: "Is the problem real, and can the venture engage it? Problem validity and cognitive foundation.",
+    dimensions: ["Problem validity", "Cognitive foundation (from CVI)"],
+  },
+  {
+    name: "Buildability",
+    body: "Can it actually be built and operated, and can it scale with agentic AI?",
+    dimensions: ["Operational tractability", "Scaling capacity (Agentic Gradient)"],
+  },
+  {
+    name: "Directional fit",
+    body: "Does it point at a future worth building, and hold together across horizons?",
+    dimensions: ["Strategic alignment", "Active futuring", "Horizon coherence"],
+  },
+  {
+    name: "Societal contribution",
+    body: "Does it build long-term societal resilience rather than extract from it?",
+    dimensions: ["Societal resilience contribution (SRI)"],
+  },
+];
+
+const cbiFunctions = [
+  {
+    name: "Screening",
+    body: "Evaluate a candidate venture against all eight dimensions. Aggregation is geometric and non-compensatory: a venture cannot buy back a fatal weakness in one dimension with strength in another. This is the gate for what enters the district.",
+  },
+  {
+    name: "Portfolio operations",
+    body: "Run a long-term strategic fund. Revenue-generating ventures sustain deep-tech bets through their droughts, so the portfolio holds a coherent value trajectory across horizons rather than betting everything on one payoff.",
+  },
+];
+
 const diff = [
   { vs: "A developer", us: "We build ventures, not just buildings." },
   { vs: "A university or government program", us: "We build market share, not just research." },
@@ -29,18 +66,20 @@ const diff = [
 ---
 
 <Main
-  title="The Actualizer Method - SyncID Labs"
+  title="The Actualizer Method - SyncI&DLabs"
   description="A self-evaluating methodology: Hybrid Intelligence and CITAble assessment. Define the futures, build the coalitions, evaluate and iterate."
   lang="en"
   activePath="/approach"
+  tightFooter={true}
 >
   <PageHeader
     eyebrow="The actualizer method"
     title="A methodology that proves itself as it grows."
     lead="Our approach, Hybrid Intelligence&trade; and CITAble&trade; assessment, is self-evaluating."
+    image={BAN_APPROACH}
+    imageAlt="Structured editorial diagram aesthetic on light canvas"
   />
 
-  <!-- The three-step method -->
   <section class="border-b border-hairline">
     <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
       <p class="eyebrow text-graphite/60">The method, in three steps</p>
@@ -60,7 +99,6 @@ const diff = [
     </div>
   </section>
 
-  <!-- Hybrid Intelligence concept -->
   <section class="border-b border-hairline">
     <div class="mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-2 lg:px-10">
       <div>
@@ -73,49 +111,123 @@ const diff = [
           not the replacement, is what makes the method credible and repeatable.
         </p>
       </div>
-      <Placeholder
-        kind="data"
-        ratio="4/3"
-        label="Hybrid Intelligence diagram: humans (governance/judgment) paired with agentic scale"
-        note="Candidate for a fw-vision dataviz widget: a pairing/augmentation visual, not replacement."
-      />
+      <HybridIntelligence />
     </div>
   </section>
 
-  <!-- CITAble assessment -->
+  <!-- Mid-page ink punctuation -->
+  <section class="bg-ink text-white">
+    <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-20">
+      <p class="eyebrow text-white/50">The self-evaluating claim</p>
+      <p class="font-display mt-5 max-w-3xl text-2xl font-normal leading-snug tracking-tight sm:text-3xl">
+        The district proves itself as it grows. Evaluation is not a report at the end; it is the
+        loop that steers what we build next.
+      </p>
+    </div>
+  </section>
+
   <section class="border-b border-hairline">
     <div class="mx-auto grid max-w-7xl items-center gap-12 px-6 py-20 lg:grid-cols-2 lg:px-10">
-      <Placeholder
-        kind="data"
-        ratio="4/3"
-        label="CITAble assessment loop: define, build, evaluate, co-evolve"
-        note="A cyclical diagram showing the self-evaluating loop. Could reuse the CITEMap / index-radar widgets."
-        dark={false}
-      />
-      <div class="lg:order-first lg:hidden"></div>
+      <CitAbleLoop />
       <div>
         <p class="eyebrow text-graphite/60">CITAble&trade; assessment</p>
         <h2 class="font-display mt-6 text-3xl font-medium leading-tight text-ink sm:text-4xl">
           A district that measures itself as it grows.
         </h2>
         <p class="mt-5 text-lg leading-relaxed text-graphite">
-          CITAble assessment co-evolves with outcomes. The evaluation is not a report at the end;
-          it is a loop that steers what we build next.
+          CITAble assessment co-evolves with outcomes. Define the futures, build the coalitions,
+          evaluate against the index, and refine the definition.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- Differentiation -->
+  <section class="border-b border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <p class="eyebrow text-graphite/60">The CITAble Business Index</p>
+      <h2 class="font-display mt-6 max-w-4xl text-3xl font-medium leading-tight text-ink sm:text-4xl">
+        How we decide what to build.
+      </h2>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-graphite">
+        The CITAble Business Index (CBI) is the instrument beneath the method. It reads a venture
+        across four categories and eight dimensions, drawing on three companion measures: the
+        Cognitive Vitality Index, the Agentic Gradient, and the Societal Resilience Index. A
+        venture that scores well on all three is not just AI-native; it is future-proof.
+      </p>
+      <div class="mt-12 grid grid-cols-1 gap-px bg-hairline md:grid-cols-2">
+        {
+          cbiCategories.map((c) => (
+            <div class="bg-canvas p-9">
+              <h3 class="font-display text-2xl font-medium text-ink">{c.name}</h3>
+              <p class="mt-3 text-base leading-relaxed text-graphite">{c.body}</p>
+              <ul class="mt-5 space-y-1">
+                {c.dimensions.map((d) => (
+                  <li class="text-sm text-graphite">
+                    <span style="color: var(--wk-accent);">&mdash;</span> {d}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+      <div class="mt-12">
+        <CbiStructure />
+      </div>
+    </div>
+  </section>
+
+  <!-- Image punctuation -->
+  <section class="media-band min-h-[280px] bg-ink text-white sm:min-h-[360px]">
+    <img class="media-band__media" src={IMG_COMPUTE} alt="" loading="lazy" />
+    <div class="media-band__scrim"></div>
+    <div class="media-band__content mx-auto flex max-w-7xl items-end px-6 py-16 lg:px-10 lg:py-20">
+      <p class="font-display max-w-xl text-2xl font-normal leading-snug sm:text-3xl">
+        Screening that cannot be bought off. Portfolio operations that hold through droughts.
+      </p>
+    </div>
+  </section>
+
+  <section class="border-b border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <p class="eyebrow text-graphite/60">How the CBI is used</p>
+      <h2 class="font-display mt-6 max-w-3xl text-3xl font-medium leading-tight text-ink sm:text-4xl">
+        Two functions: select, then steer.
+      </h2>
+      <div class="mt-12 grid grid-cols-1 gap-px bg-hairline md:grid-cols-2">
+        {
+          cbiFunctions.map((f) => (
+            <div class="bg-canvas p-9">
+              <h3 class="font-display text-xl font-medium text-ink">{f.name}</h3>
+              <p class="mt-4 text-base leading-relaxed text-graphite">{f.body}</p>
+            </div>
+          ))
+        }
+      </div>
+      <p class="mt-10 max-w-2xl text-base leading-relaxed text-graphite">
+        This is what separates SyncID from a developer. The CBI is the qualification authority for
+        what enters the district and the instrument that tells us, with evidence, whether a
+        coalition is on track.
+      </p>
+    </div>
+  </section>
+
   <section>
-    <div class="mx-auto max-w-3xl px-6 py-20 lg:px-10">
+    <div class="mx-auto max-w-3xl px-6 pb-16 pt-20 lg:px-10">
       <p class="eyebrow text-graphite/60">How we differ</p>
-      <div class="mt-8 divide-y divide-hairline border-y border-hairline">
+      <div class="mt-10 divide-y divide-hairline border-t border-hairline">
         {
           diff.map((d) => (
-            <div class="flex flex-col gap-1 py-5 sm:flex-row sm:gap-8">
-              <span class="w-full text-sm font-medium text-graphite sm:w-72">{d.vs}</span>
-              <span class="text-lg text-ink">{d.us}</span>
+            <div class="flex flex-col gap-2 py-7 sm:flex-row sm:items-baseline sm:gap-10">
+              <span class="w-full shrink-0 text-base font-medium text-graphite sm:w-64 sm:text-lg">
+                {d.vs}
+              </span>
+              <span
+                class="font-display text-xl font-medium leading-snug sm:text-2xl"
+                style="color: var(--wk-accent);"
+              >
+                {d.us}
+              </span>
             </div>
           ))
         }

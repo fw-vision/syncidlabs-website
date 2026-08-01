@@ -1,0 +1,221 @@
+---
+import Main from "../../layouts/Main.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import LogoGrid from "../../components/LogoGrid.astro";
+import {
+  advisors,
+  universityCollaborations,
+  universityAssociations,
+  communities,
+} from "../../data/advisors";
+import { BAN_ABOUT } from "../../data/media";
+---
+
+<Main
+  title="Network - SyncI&DLabs"
+  description="SyncI&DLabs pioneered the owner-operator venture-studio model before the form existed. Founder Francis Wang and a network of advisors and university collaborators, reading Canada's innovation ecosystems and actualizing the opportunities they reveal."
+  lang="en"
+  activePath="/network"
+>
+  <PageHeader
+    eyebrow="Network"
+    title="Ecosystem amplifiers who actualize."
+    lead="We understand how Canada's innovation ecosystems work, where they leak value, and where the opportunities are. We pioneered the model that amplifies them. The district is the vehicle."
+    image={BAN_ABOUT}
+    imageAlt="Canadian research landscape at warm daylight"
+  />
+
+  <section>
+    <div class="mx-auto max-w-3xl px-6 py-20 lg:px-10">
+      <div class="space-y-7 text-lg leading-relaxed text-graphite">
+        <p>
+          SyncI&DLabs, Synchronous Incubation and Development Labs, has run an owner-operator
+          venture-studio model since 2013, before that form factor had a name. We were the novel
+          inventors and pioneers of this methodology: not passive investors, not a service shop,
+          but operators who build and turn around ventures from the inside and amplify the
+          ecosystem around them.
+        </p>
+        <p>
+          We have spent a decade inside the Canadian innovation gap. We know why founders leave,
+          why IP is lost, and why districts fail when they treat land as the product. Our claim is
+          different: opportunity analysis is credible because the people are inside the ecosystems
+          they analyse. Francis Wang is the connective node; the network gives the reach.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The founding thesis: Waterloo -> Canada -->
+  <section class="border-t border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <p class="eyebrow text-graphite/60">The thesis, from Waterloo to Canada</p>
+      <h2 class="font-display mt-6 max-w-4xl text-3xl font-medium leading-tight text-ink sm:text-4xl">
+        We saw a small place of vast potential. <br/>Now we see a country.
+      </h2>
+      <p class="mt-6 max-w-3xl text-lg leading-relaxed text-graphite">
+        In 2013, Waterloo looked like a town of outsized potential, and the question was how much
+        of it you could help build by participating at the right time, with the right people. The
+        answer, across the following decade, runs to an estimated 25 to 40 billion dollars. The
+        same question now applies at national scale: Canada is a multi-trillion-dollar opportunity
+        over the coming decades, if it can keep the value it creates.
+      </p>
+      <div class="mt-12 grid grid-cols-2 gap-8 md:grid-cols-4">
+        <div>
+          <div class="font-display text-4xl font-semibold tracking-tight sm:text-5xl" style="color: var(--wk-accent);">
+            $25-40B
+          </div>
+          <div class="mt-2 text-sm font-medium text-graphite">
+            Waterloo innovation value, 2013 to 2024 (estimated)
+          </div>
+        </div>
+        <div>
+          <div class="font-display text-4xl font-semibold tracking-tight sm:text-5xl" style="color: var(--wk-accent);">
+            $3-5T
+          </div>
+          <div class="mt-2 text-sm font-medium text-graphite">
+            Canada's potential over 15 years, sovereignty scenario
+          </div>
+        </div>
+        <div>
+          <div class="font-display text-4xl font-semibold tracking-tight sm:text-5xl" style="color: var(--wk-accent);">
+            2013
+          </div>
+          <div class="mt-2 text-sm font-medium text-graphite">
+            Pioneering the venture-studio model
+          </div>
+        </div>
+        <div>
+          <div class="font-display text-4xl font-semibold tracking-tight sm:text-5xl" style="color: var(--wk-accent);">
+            10
+          </div>
+          <div class="mt-2 text-sm font-medium text-graphite">
+            University associations in the network
+          </div>
+        </div>
+      </div>
+      <p class="mt-6 max-w-2xl text-sm italic text-graphite/70">
+        Regional and national figures are directional estimates under a coordinated
+        sovereignty scenario, not verified forecasts. The verified problem statement is on
+        <a href="/en/research" class="accent-link">The Canadian Gap</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- Founder: connective node -->
+  <section class="border-t border-hairline">
+    <div class="mx-auto grid max-w-7xl items-start gap-12 px-6 py-20 lg:grid-cols-2 lg:px-10">
+      <img
+        src="/images/francis_wang.jpg"
+        alt="Francis Wang, founder of SyncI&DLabs"
+        width="640"
+        height="800"
+        loading="lazy"
+        class="w-full border border-hairline object-cover"
+        style="aspect-ratio: 4 / 5;"
+      />
+      <div>
+        <p class="eyebrow text-graphite/60">Founder</p>
+        <h2 class="font-display mt-6 text-3xl font-medium leading-tight text-ink sm:text-4xl">
+          Francis Wang
+        </h2>
+        <p class="mt-5 text-lg leading-relaxed text-graphite">
+          Founder of SyncI&DLabs and the connective node of the network. Owner-operator and
+          venture-studio pioneer, doctoral researcher in CITAble and Hybrid Intelligence, and the
+          originator of the actualizer method.
+        </p>
+        <p class="mt-5 text-lg leading-relaxed text-graphite">
+          Waterloo embeddedness runs through the work: Think Tank Labs at the Research and
+          Technology Park, mentorship under Larry Smith, and an alumni network that still grounds
+          opportunity reading in the region. Doctoral research spans the University of Waterloo,
+          the University of Calgary, and Golden Gate University, with venture outcomes at the $70M
+          and $650M scale behind the claim.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 university associations -->
+  <section class="border-t border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <p class="eyebrow text-graphite/60">University associations</p>
+      <h2 class="font-display mt-6 max-w-3xl text-3xl font-medium leading-tight text-ink sm:text-4xl">
+        Reach across ten universities.
+      </h2>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-graphite">
+        The network spans ten universities as alma maters, doctoral homes, and collaboration
+        partners. The breadth of that reach is the point: a network across the ecosystems the
+        district draws on.
+      </p>
+      <div class="mt-12">
+        <LogoGrid items={universityAssociations} captions={true} />
+      </div>
+    </div>
+  </section>
+
+  <!-- Advisory board -->
+  <section class="border-t border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <p class="eyebrow text-graphite/60">Advisory board</p>
+      <h2 class="font-display mt-6 max-w-3xl text-3xl font-medium leading-tight text-ink sm:text-4xl">
+        Advisors positioned by ecosystem embeddedness.
+      </h2>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-graphite">
+        Authority is human and networked. Each advisor is listed for where they sit inside an
+        ecosystem, not for decorative prestige.
+      </p>
+      <div class="mt-12 grid grid-cols-1 gap-px bg-hairline md:grid-cols-2">
+        {
+          advisors.map((a) => (
+            <div class="bg-canvas p-9">
+              <p class="eyebrow text-graphite/60">{a.role}</p>
+              <h3 class="font-display mt-4 text-2xl font-medium text-ink">{a.name}</h3>
+              <p class="mt-4 text-base leading-relaxed text-graphite">{a.embeddedness}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- University collaborations -->
+  <section class="border-t border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <p class="eyebrow text-graphite/60">University collaborations</p>
+      <h2 class="font-display mt-6 max-w-3xl text-3xl font-medium leading-tight text-ink sm:text-4xl">
+        Collaborators, by practice.
+      </h2>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-graphite">
+        Beyond the advisory board, we engage a research-and-practice community across many
+        institutions, each on a specific angle of practice.
+      </p>
+      <div class="mt-12 grid grid-cols-1 gap-px bg-hairline sm:grid-cols-2 lg:grid-cols-3">
+        {
+          universityCollaborations.map((c) => (
+            <div class="bg-canvas p-8">
+              <h3 class="font-display text-xl font-medium text-ink">{c.university}</h3>
+              <p class="mt-3 text-base leading-relaxed text-ink">{c.contact}</p>
+              <p class="mt-2 text-sm leading-relaxed text-graphite">{c.angle}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Communities logo grid -->
+  <section class="border-t border-hairline">
+    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <p class="eyebrow text-graphite/60">Communities and institutes we engage</p>
+      <h2 class="font-display mt-6 max-w-3xl text-3xl font-medium leading-tight text-ink sm:text-4xl">
+        Embedded across foresight, design, and practice communities.
+      </h2>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-graphite">
+        Association marks are nominative. They name the communities we engage; they are not
+        endorsements.
+      </p>
+      <div class="mt-12">
+        <LogoGrid items={communities} captions={true} />
+      </div>
+    </div>
+  </section>
+</Main>

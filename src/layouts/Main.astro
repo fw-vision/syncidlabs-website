@@ -1,7 +1,8 @@
 ---
-import "../styles/global.css";
 import "@fw-vision/web-kit/styles/tokens.css";
 import "@fw-vision/web-kit/styles/annotation-tokens.css";
+/* SyncID tokens must load after web-kit so --wk-accent burgundy wins over the kit default. */
+import "../styles/global.css";
 import Wordmark from "../components/Wordmark.astro";
 
 export interface Props {
@@ -11,26 +12,41 @@ export interface Props {
   activePath?: string;
   /** When true, the nav starts transparent over a dark hero and turns solid on scroll. */
   heroNav?: boolean;
+  /**
+   * When true, reduce the gap above the footer. Use when the last page band
+   * (e.g. a logo ticker) should sit symmetrically against the footer rule.
+   */
+  tightFooter?: boolean;
 }
 
-const { title, description, lang = "en", activePath = "", heroNav = false } = Astro.props;
+const {
+  title,
+  description,
+  lang = "en",
+  activePath = "",
+  heroNav = false,
+  tightFooter = false,
+} = Astro.props;
 
-const navLinks = [
-  { label: "About", href: `/${lang}/about` },
-  { label: "District", href: `/${lang}/district` },
-  { label: "Futures", href: `/${lang}/futures` },
-  { label: "Approach", href: `/${lang}/approach` },
-  { label: "Research", href: `/${lang}/research` },
-  { label: "Partners", href: `/${lang}/partners` },
-  { label: "Insights", href: `/${lang}/insights` },
-  { label: "Contact", href: `/${lang}/contact` },
-];
+  const navLinks = [
+    { label: "Network", href: `/${lang}/network` },
+    { label: "The Canadian Gap", href: `/${lang}/research` },
+    { label: "Approach", href: `/${lang}/approach` },
+    { label: "Futures", href: `/${lang}/futures` },
+    { label: "District", href: `/${lang}/district` },
+    { label: "Insights", href: `/${lang}/insights` },
+    { label: "Contact", href: `/${lang}/contact` },
+  ];
 
-const locales = [
+/** Full locale map kept for the deferred FR/ZH pass. Only visibleLocales render in nav. */
+const allLocales = [
   { code: "en", href: activePath ? `/en${activePath}` : "/en/" },
   { code: "fr", href: activePath ? `/fr${activePath}` : "/fr/" },
   { code: "zh", href: activePath ? `/zh${activePath}` : "/zh/" },
 ];
+const visibleLocales = ["en"];
+const locales = allLocales.filter((loc) => visibleLocales.includes(loc.code));
+const showLanguageNav = locales.length > 1;
 ---
 
 <!doctype html>
@@ -41,8 +57,13 @@ const locales = [
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700&display=swap"
       rel="stylesheet"
     />
     <title>{title}</title>
@@ -58,7 +79,7 @@ const locales = [
       ]}
     >
       <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
-        <a href={`/${lang}/`} class="site-brand" aria-label="SyncID Labs home">
+        <a href={`/${lang}/`} class="site-brand" aria-label="SyncI&DLabs home">
           <Wordmark variant="nav" class="brand-text text-lg" />
         </a>
         <nav class="hidden items-center gap-7 lg:flex">
@@ -74,21 +95,23 @@ const locales = [
             ))
           }
         </nav>
-        <div class="flex items-center gap-1">
-          {
-            locales.map((loc) => (
-              <a
-                href={loc.href}
-                class:list={[
-                  "nav-locale px-2 py-1 text-xs uppercase tracking-[0.15em] transition-colors",
-                  loc.code === lang ? "is-active font-semibold" : "",
-                ]}
-              >
-                {loc.code}
-              </a>
-            ))
-          }
-        </div>
+        {
+          showLanguageNav && (
+            <div class="flex items-center gap-1">
+              {locales.map((loc) => (
+                <a
+                  href={loc.href}
+                  class:list={[
+                    "nav-locale px-2 py-1 text-xs uppercase tracking-[0.15em] transition-colors",
+                    loc.code === lang ? "is-active font-semibold" : "",
+                  ]}
+                >
+                  {loc.code}
+                </a>
+              ))}
+            </div>
+          )
+        }
       </div>
     </header>
 
@@ -96,25 +119,26 @@ const locales = [
       <slot />
     </main>
 
-    <footer class="mt-28 border-t border-hairline">
+    <footer class:list={[tightFooter ? "mt-6" : "mt-28", "border-t border-hairline"]}>
       <div class="mx-auto max-w-7xl px-6 py-16 lg:px-10">
         <div class="flex flex-col justify-between gap-10 md:flex-row">
           <div>
             <span class="block font-display leading-[0.95] tracking-[-0.03em]">
               <span class="block text-lg font-medium text-graphite">Synchronous</span>
               <span class="block text-2xl font-semibold text-ink">
-                <span style="color: var(--wk-accent);">I&amp;D</span> Labs Inc.
+                <span class="accent-mark" style="color: var(--wk-accent);">I&amp;D</span> Labs Inc.
               </span>
             </span>
             <p class="mt-4 max-w-sm text-sm leading-relaxed text-graphite">
-              Actualizing Canada's strategic futures. An innovation district, real pipelines,
-              and coalitions of ventures, built on 89 acres in Markham.
+              We understand Canada's innovation ecosystems and actualize the opportunities
+              they reveal. The district is the vehicle.
             </p>
           </div>
           <nav class="flex flex-col gap-2.5 text-sm text-graphite">
-            <a href={`/${lang}/about`} class="transition-colors hover:text-ink">About</a>
-            <a href={`/${lang}/research`} class="transition-colors hover:text-ink">Research</a>
-            <a href={`/${lang}/partners`} class="transition-colors hover:text-ink">Partners</a>
+            <a href={`/${lang}/network`} class="transition-colors hover:text-ink">Network</a>
+            <a href={`/${lang}/research`} class="transition-colors hover:text-ink">The Canadian Gap</a>
+            <a href={`/${lang}/district`} class="transition-colors hover:text-ink">District</a>
+            <a href={`/${lang}/insights`} class="transition-colors hover:text-ink">Insights</a>
             <a href={`/${lang}/contact`} class="transition-colors hover:text-ink">Contact</a>
             <a href={`/${lang}/legal/privacy`} class="transition-colors hover:text-ink">Privacy</a>
             <a href={`/${lang}/legal/terms`} class="transition-colors hover:text-ink">Terms</a>

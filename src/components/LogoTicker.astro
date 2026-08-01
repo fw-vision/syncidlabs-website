@@ -1,0 +1,120 @@
+---
+/**
+ * Scrolling logo ticker. Uniform-height grayscale marks; burgundy separators
+ * (mirrors the hero ticker accent arrows). No outer borders. Pauses on hover;
+ * static under prefers-reduced-motion.
+ */
+export interface LogoItem {
+  id: string;
+  name: string;
+  logo?: string;
+  logoWide?: string;
+  reverse?: boolean;
+  href?: string;
+}
+export interface Props {
+  items: LogoItem[];
+  dark?: boolean;
+}
+const { items, dark = false } = Astro.props;
+const withMark = items.filter((i) => i.logo || i.name);
+const doubled = [...withMark, ...withMark];
+---
+
+<div class:list={["logo-ticker", dark ? "bg-ink" : "bg-canvas"]}>
+  <div class="logo-ticker__track">
+    {
+      doubled.map((item, idx) => (
+        <span
+          class="logo-ticker__item"
+          aria-hidden={idx >= withMark.length ? "true" : undefined}
+        >
+          {item.logo ? (
+            <img
+              src={item.logo}
+              alt={idx < withMark.length ? item.name : ""}
+              class:list={[
+                "logo-ticker__img",
+                item.reverse && !dark && "logo-ticker__img--reverse",
+              ]}
+              loading="lazy"
+            />
+          ) : (
+            <span
+              class:list={[
+                "font-display text-base font-medium tracking-tight",
+                dark ? "text-white/80" : "text-ink",
+              ]}
+            >
+              {item.name}
+            </span>
+          )}
+          <span
+            class="logo-ticker__sep"
+            style={
+              dark
+                ? "background: var(--wk-accent-on-dark)"
+                : "background: var(--wk-accent)"
+            }
+          />
+        </span>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .logo-ticker {
+    overflow: hidden;
+  }
+  .logo-ticker__track {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    padding-block: 1.25rem;
+    animation: logo-ticker-scroll 50s linear infinite;
+    will-change: transform;
+  }
+  .logo-ticker:hover .logo-ticker__track {
+    animation-play-state: paused;
+  }
+  .logo-ticker__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 2.75rem;
+    padding-inline: 1.75rem;
+  }
+  .logo-ticker__img {
+    height: 74px;
+    width: auto;
+    max-width: 240px;
+    object-fit: contain;
+    filter: grayscale(1) contrast(1.05);
+    opacity: 0.85;
+  }
+  .logo-ticker__img--reverse {
+    filter: invert(1) grayscale(1) contrast(1.05);
+  }
+  .logo-ticker__sep {
+    display: inline-block;
+    width: 1px;
+    height: 2.25rem;
+    background: var(--wk-accent);
+  }
+  @keyframes logo-ticker-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .logo-ticker__track {
+      animation: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      row-gap: 1.25rem;
+    }
+  }
+</style>
