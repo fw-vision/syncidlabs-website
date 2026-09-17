@@ -10,7 +10,7 @@ The public credibility website for **SyncID Labs**, the operational incubator en
 - **Posture:** near-term goal is a reputable, credible trilingual presence to earn the Councillor Ho endorsement + Mayor Scarpitti follow-up. Government-facing and capital-facing.
 - **Languages:** Canadian English (en) primary; Quebec French (fr) and Mandarin Chinese (zh) are language-native registers, not translations (the deferred 20%).
 
-This repository is the **website implementation**. Brand and content direction are maintained separately (in the Perceptiosphere vault); do not invent brand or messaging. Work from `docs/brand/DESIGN.md`, `docs/plans/`, and the existing pages.
+This repository is the **website implementation**. Brand and content direction are maintained in the canonical vault context at `../../../04_Execute/SyncIDLabs/README.md`; do not invent brand or messaging. Read that context before changing positioning or public claims, then use `docs/brand/DESIGN.md`, project-local plans, and the existing pages for implementation.
 
 ## Read next (in this repo)
 
